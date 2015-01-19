@@ -1,0 +1,83 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:text="Login"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            
+            <TextView
+                android:id="@+id/textLogEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="30dp"
+                android:text="EMail"
+                android:textSize="20dp" />
+            
+            <EditText
+                android:id="@+id/textboxLogEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:singleLine="true"
+                android:text="" />
+			
+            <TextView
+                android:id="@+id/textLogPW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="30dp"
+                android:text="Passwort"
+                android:textSize="20dp" />
+            
+            <EditText
+                android:id="@+id/textboxLogPW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:singleLine="true"
+                android:inputType="textPassword"
+                android:text="" />
+
+
+            
+
+            <Button
+                android:id="@+id/btnloginuser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="50dp"
+                android:text="Login" />
+
+        </LinearLayout>
+  
+       </ScrollView>
+
+</RelativeLayout>

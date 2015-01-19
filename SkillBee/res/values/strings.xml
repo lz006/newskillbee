@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SkillBee</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Learning Line Übersicht</string>
+    <string name="title_activity_user_registration_fragment">UserRegistrationFragment</string>
+    <string name="title_activity_user_login_fragment">UserLoginFragment</string>
+ <string name="imgdesc">imgdesc</string>
+ <string name="kategorie">Wähle eine Kategorie</string>
+    
+    <string-array name="titles">
+        <item>Learning Line Übersicht</item>
+        <item>Learning Line Editor</item>
+        <item>Learning Line Store</item>
+    
+        <item>About Us</item>
+    </string-array>
+
+    <array name="icons">
+        <item>@drawable/uebersicht</item>
+        <item>@drawable/editor</item>
+        <item>@drawable/store</item>
+      
+        <item>@drawable/us</item>
+    </array>
+    
+    
+      
+      <string-array name="kategories">
+        <item>Programmierung</item>
+        <item>BWL</item>
+        <item>Webentwicklung</item>
+    </string-array>
+
+            
+    
+    
+    
+    
+</resources>

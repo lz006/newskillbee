@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="de.hdm.skillbee.SkillBeeActivity" >
+
+    
+     
+    
+        
+          <item android:id="@+id/submenu1"
+        android:title="Übersicht"/>
+       
+         <item android:id="@+id/submenu2"
+        android:title="Editor"/>
+         
+           <item android:id="@+id/submenu3"
+        android:title="Store"/>
+           
+        
+        
+           
+        </menu>

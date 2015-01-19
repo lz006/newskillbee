@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" > 
+    <item android:state_pressed="true"  android:drawable="@drawable/button2" > 
+        <shape >
+            <corners 
+                android:topLeftRadius="12dp"
+                android:topRightRadius="12dp"
+                android:bottomLeftRadius="12dp"
+                android:bottomRightRadius="12dp"/>
+        </shape>
+        
+        </item> 
+    <item android:drawable="@drawable/button1"> 
+    <shape >
+           <gradient 
+               android:angle="90"/>
+        	<corners 
+                android:topLeftRadius="12dp"
+                android:topRightRadius="12dp"
+                android:bottomLeftRadius="12dp"
+                android:bottomRightRadius="12dp"/>
+        </shape>    
+    </item> 
+</selector>
+
+
+
