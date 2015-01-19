@@ -29,6 +29,7 @@ public class LearningPunktEditorFragment extends ListFragment implements OnItemC
     Activity baseActivity;
     ControllerDBLokal cdbl = null;
     Knoten selectednode;
+    Learningline ll =null;
     Button nodecreatebutton = null;
     int llid= 0;
     int llkategorie = 0;
@@ -49,9 +50,9 @@ public class LearningPunktEditorFragment extends ListFragment implements OnItemC
     	View v = inflater.inflate(R.layout.fragment_learningpunkt_editor, null, false);
     	cdbl = ControllerDBLokal.get();
     	
-         llid = getArguments().getInt("llid");   
-    	 llkategorie = getArguments().getInt("llkategorie");
-		 llbezeichnung =getArguments().getString("llbezeichnung");
+//         llid = getArguments().getInt("llid");   
+//    	 llkategorie = getArguments().getInt("llkategorie");
+//		 llbezeichnung =getArguments().getString("llbezeichnung");
     	
     	nodecreatebutton = (Button)v.findViewById(R.id.btnnodeerstellen);
     	setOnClickListener();
@@ -67,10 +68,8 @@ public class LearningPunktEditorFragment extends ListFragment implements OnItemC
      //   menutitles = getResources().getStringArray(R.array.titles);
         
         
-        Learningline ll = new Learningline();
-        ll.setId(llid);
-        ll.setKategorieID(llkategorie);
-        ll.setBezeichnung(llbezeichnung);
+       // Learningline ll = new Learningline();
+        
         
         allnodes = cdbl.getKnotenMapper().findByLL(ll);
         
@@ -111,6 +110,10 @@ public class LearningPunktEditorFragment extends ListFragment implements OnItemC
        
 
     }
+    
+    public void setLL(Learningline ll) {
+		this.ll = ll;
+	}
 	
 	public void setOnClickListener() {
 		nodecreatebutton.setOnClickListener(new OnClickListener() {
@@ -118,9 +121,10 @@ public class LearningPunktEditorFragment extends ListFragment implements OnItemC
 		    	FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
 			 
 			
-			    LearninglineErstellenFragment lle = new LearninglineErstellenFragment();
-		    	lle.setBaseActivity(baseActivity);
-		    	fragmentTransaction.replace(R.id.fragmentcontainer, lle);
+			    LearningPunktErstellenFragment lpef = new LearningPunktErstellenFragment();
+		    	lpef.setLL(ll);
+			    lpef.setBaseActivity(baseActivity);
+		    	fragmentTransaction.replace(R.id.fragmentcontainer, lpef);
 		    	fragmentTransaction.addToBackStack(null);
 		     	fragmentTransaction.commit();
 			}

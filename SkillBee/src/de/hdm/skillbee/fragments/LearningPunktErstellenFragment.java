@@ -40,6 +40,7 @@ public class LearningPunktErstellenFragment extends Fragment implements OnClickL
 	
 	JSONParser jsonParser = new JSONParser();
 	
+	Learningline ll=null;
 	EditText Bezeichnung;
 	EditText InhaltKurz;
 	EditText InhaltLang;
@@ -96,6 +97,10 @@ public class LearningPunktErstellenFragment extends Fragment implements OnClickL
 //	      R.layout.user_registration_fragment, container, false);
 	}
 	
+	public void setLL(Learningline ll)
+	{
+	this.ll=ll;
+	}
 	
 	@Override
     public void onClick(View v) {
@@ -109,17 +114,32 @@ public class LearningPunktErstellenFragment extends Fragment implements OnClickL
         	learningpunkt.setInhalt(InhaltLang.getText().toString());
         	learningpunkt.setGoogleLink(GoogleLink.getText().toString());
         	learningpunkt.setYoutubeLink(YoutubeLink.getText().toString());
-        	learningpunkt.setLlIDLoc(llIDLoc);
-	       	learningpunkt.setLlIDOn(llIDOn);
+        	learningpunkt.setLlIDLoc(ll.getId());
+	       	learningpunkt.setLlIDOn(ll.getIdOn());
+	       	LearningPunktErstellenFragment.this.cdbl.getKnotenMapper().insert(learningpunkt);
+        	showMessage("Knoten erfolgreich erstellt");
         	
         	
         	
-        	
-	       	new learningPunktCreate().execute();        
+//	       	new learningPunktCreate().execute();        
 	       	
         break;
         }
     }
+	
+	
+	public void showMessage(String message)
+	{
+	Toast einToast = Toast.makeText(LearningPunktErstellenFragment.this.baseActivity.getApplicationContext(), message, Toast.LENGTH_LONG);
+	einToast.show();
+	FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+	LpgotoQuestionFragment llef = new LpgotoQuestionFragment();
+	llef.setBaseActivity(baseActivity);
+	fragmentTransaction.replace(R.id.fragmentcontainer, llef);
+	fragmentTransaction.addToBackStack(null);
+ 	fragmentTransaction.commit();
+	}
+	
 	
 	private class learningPunktCreate extends AsyncTask<Void, Void, Void> {
 

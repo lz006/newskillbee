@@ -48,6 +48,7 @@ public class LearningPunktBearbeitenFragment extends Fragment implements OnClick
 	EditText Position;
 	int llIDLoc;
 	int llIDOn;
+	Knoten kn=null;
 
 
 	
@@ -112,6 +113,10 @@ public class LearningPunktBearbeitenFragment extends Fragment implements OnClick
 //	      R.layout.user_registration_fragment, container, false);
 	}
 	
+	public void setKnoten(Knoten kn)
+	{
+	this.kn=kn;
+	}
 	
 	@Override
     public void onClick(View v) {

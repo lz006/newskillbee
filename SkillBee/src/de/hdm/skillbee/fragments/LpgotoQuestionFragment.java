@@ -165,13 +165,13 @@ public class LpgotoQuestionFragment extends ListFragment implements OnItemClickL
 		 Toast.makeText(getActivity(),"longclick: "+ position, Toast.LENGTH_SHORT)
          .show();
 		 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-		 Bundle args = new Bundle();
-		 args.putString("llbezeichnung", selectedlearningline.getBezeichnung());
-		 args.putInt("llid", selectedlearningline.getId());
-		 args.putInt("llkategorie",selectedlearningline.getKategorieID());
+//		 Bundle args = new Bundle();
+//		 args.putString("llbezeichnung", selectedlearningline.getBezeichnung());
+//		 args.putInt("llid", selectedlearningline.getId());
+//		 args.putInt("llkategorie",selectedlearningline.getKategorieID());
 		 LearningPunktEditorFragment lpef = new LearningPunktEditorFragment();
-     	lpef.setBaseActivity(baseActivity);
-     	lpef.setArguments(args);
+     	lpef.setLL(selectedlearningline);
+		 lpef.setBaseActivity(baseActivity);
      	fragmentTransaction.replace(R.id.fragmentcontainer, lpef);
      	fragmentTransaction.addToBackStack(null);
       	fragmentTransaction.commit();
