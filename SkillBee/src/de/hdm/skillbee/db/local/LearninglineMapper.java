@@ -123,16 +123,32 @@ public class LearninglineMapper {
 		
 		Cursor c = dbConLocal.readQuery("SELECT MAX(idLoc) AS maxid FROM Learningline;",null);
 		if (c.moveToFirst()) {
-			if (c.getInt(0) == 0) {
+			
+			
+			
+			if (c.getCount() == 0) {	
+					
 				ll.setId(c.getInt(0));
+				
+				
+				
 			}
+			
+			else {
+			
+			if (c.getCount() > 0 && c.getInt(0) == 0) {	
+				
+				ll.setId(1);
+			}
+			
+			
 			
 			else {
 				
 				ll.setId(c.getInt(0)+1);
 				
 			}
-			
+			}
 		}
 		
 		

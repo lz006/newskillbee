@@ -5,7 +5,7 @@
     tools:context="${relativePackage}.${activityClass}" >
 
     <ScrollView
-        android:id="@+id/scrollView1"
+        android:id="@+id/scrollView1e"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true" >
@@ -16,7 +16,7 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/textLogin"
+                android:id="@+id/textLogine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
@@ -25,7 +25,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/textLogEmail"
+                android:id="@+id/textLogEmaile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
@@ -34,7 +34,7 @@
                 android:textSize="20dp" />
 
             <EditText
-                android:id="@+id/editTextBezeichnung"
+                android:id="@+id/editTextBezeichnunge"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
@@ -44,7 +44,7 @@
                 android:inputType="textMultiLine" />
 
             <TextView
-                android:id="@+id/TextView02"
+                android:id="@+id/TextView02e"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
@@ -53,16 +53,15 @@
                 android:textSize="20dp" />
 
             <EditText
-                android:id="@+id/editTextPosition"
+                android:id="@+id/editTextPositione"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="10dp"
-                android:inputType="number" />
+                android:layout_marginTop="10dp" />
 
             <TextView
-                android:id="@+id/TextView01"
+                android:id="@+id/TextView01e"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
@@ -71,7 +70,7 @@
                 android:textSize="20dp" />
 
             <EditText
-                android:id="@+id/EditTextShort"
+                android:id="@+id/EditTextShorte"
                 android:layout_width="250dp"
                 android:layout_height="80dp"
                 android:layout_marginLeft="40dp"
@@ -81,7 +80,7 @@
                 android:inputType="textMultiLine" />
             
             <TextView
-                android:id="@+id/TextView03"
+                android:id="@+id/TextView03e"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
@@ -90,7 +89,7 @@
                 android:textSize="20dp" />
 
             <EditText
-                android:id="@+id/EditTextLong"
+                android:id="@+id/EditTextLonge"
                 android:layout_width="250dp"
                 android:layout_height="80dp"
                 android:layout_marginLeft="40dp"
@@ -103,7 +102,7 @@
             </EditText>
 
             <EditText
-                android:id="@+id/editTextGoogle"
+                android:id="@+id/editTextGooglee"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
@@ -112,7 +111,7 @@
                 android:hint="Google Link" />
 
             <EditText
-                android:id="@+id/editTextYoutube"
+                android:id="@+id/editTextYoutubee"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
@@ -125,7 +124,7 @@
                 android:layout_height="wrap_content" >
 
                 <Button
-                    android:id="@+id/btnlpsave"
+                    android:id="@+id/btnlpsavee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="50dp"
@@ -134,7 +133,7 @@
                     android:text="Speichern" />
 
                 <Button
-                    android:id="@+id/btnlpdelite"
+                    android:id="@+id/btnlpdelitee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="50dp"

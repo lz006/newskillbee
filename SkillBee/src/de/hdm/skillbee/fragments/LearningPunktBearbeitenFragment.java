@@ -46,8 +46,6 @@ public class LearningPunktBearbeitenFragment extends Fragment implements OnClick
 	EditText GoogleLink;
 	EditText YoutubeLink;
 	EditText Position;
-	int llIDLoc;
-	int llIDOn;
 	Knoten kn=null;
 
 
@@ -77,28 +75,28 @@ public class LearningPunktBearbeitenFragment extends Fragment implements OnClick
 		
 		
     	
-    	learningpunkt = new Knoten();
-    	learningpunkt = cdbl.getKnotenMapper().insert(learningpunkt);
+    	
 
     	
     	
 		View v = inflater.inflate(R.layout.learningpunkt_bearbeiten_fragment, container, false);
-		Button btnregister = (Button) v.findViewById(R.id.btnlpsave);
+		Button btnregister = (Button) v.findViewById(R.id.btnlpsavee);
 		btnregister.setOnClickListener(this);
-		Bezeichnung = (EditText)v.findViewById(R.id.editTextBezeichnung);
-		Position = (EditText)v.findViewById(R.id.editTextPosition);
-		InhaltKurz = (EditText)v.findViewById(R.id.EditTextShort);
-		InhaltLang = (EditText)v.findViewById(R.id.EditTextLong);
-		GoogleLink = (EditText)v.findViewById(R.id.editTextGoogle);
-		YoutubeLink = (EditText)v.findViewById(R.id.editTextYoutube);
+		Button btndelete= (Button) v.findViewById(R.id.btnlpdelitee);
+		btndelete.setOnClickListener(this);
+		Bezeichnung = (EditText)v.findViewById(R.id.editTextBezeichnunge);
+		Position = (EditText)v.findViewById(R.id.editTextPositione);
+		InhaltKurz = (EditText)v.findViewById(R.id.EditTextShorte);
+		InhaltLang = (EditText)v.findViewById(R.id.EditTextLonge);
+		GoogleLink = (EditText)v.findViewById(R.id.editTextGooglee);
+		YoutubeLink = (EditText)v.findViewById(R.id.editTextYoutubee);
 		
-		Bezeichnung.setText(learningpunkt.getUeberschrift());
-		Position.setText(learningpunkt.getPosition());
-		InhaltKurz.setText(learningpunkt.getKurzInhalt());
-		InhaltLang.setText(learningpunkt.getInhalt());
-		GoogleLink.setText(learningpunkt.getGoogleLink());
-		YoutubeLink.setText(learningpunkt.getYoutubeLink());
-		
+		Bezeichnung.setText(kn.getUeberschrift());
+		Position.setText(Integer.valueOf(kn.getPosition()).toString());
+		InhaltKurz.setText(kn.getKurzInhalt());
+		InhaltLang.setText(kn.getInhalt());
+		GoogleLink.setText(kn.getGoogleLink());
+		YoutubeLink.setText(kn.getYoutubeLink());
 		
 		
 		
@@ -121,7 +119,7 @@ public class LearningPunktBearbeitenFragment extends Fragment implements OnClick
 	@Override
     public void onClick(View v) {
         switch (v.getId()) {
-        case R.id.btnlpsave:
+        case R.id.btnlpsavee:
         	//Create User temporarily               	
         	learningpunkt = new Knoten();
         	learningpunkt.setUeberschrift(Bezeichnung.getText().toString());
@@ -130,20 +128,38 @@ public class LearningPunktBearbeitenFragment extends Fragment implements OnClick
         	learningpunkt.setInhalt(InhaltLang.getText().toString());
         	learningpunkt.setGoogleLink(GoogleLink.getText().toString());
         	learningpunkt.setYoutubeLink(YoutubeLink.getText().toString());
-        	learningpunkt.setLlIDLoc(llIDLoc);
-	       	learningpunkt.setLlIDOn(llIDOn);
+        	learningpunkt.setId(kn.getId());
+        	learningpunkt.setLlIDLoc(kn.getLlIDLoc());
+	       	learningpunkt.setLlIDOn(kn.getLlIDOn());
+	       	LearningPunktBearbeitenFragment.this.cdbl.getKnotenMapper().update(learningpunkt);
+        	showMessage("Knoten wurde erfolgreich geändert");
         	
         	
-        	
-        	
-	       	new learningPunktCreate().execute();        
+	 //      	new learningPunktCreate().execute();        
 	       	
         break;
         
-        case R.id.btnlpdelite:
+        case R.id.btnlpdelitee:
+	       	LearningPunktBearbeitenFragment.this.cdbl.getKnotenMapper().delete(kn);
+        	showMessage("Knoten wurde erfolgreich gelöscht");
         	break;
         }
+        
     }
+	
+	
+	
+	public void showMessage(String message)
+	{
+	Toast einToast = Toast.makeText(LearningPunktBearbeitenFragment.this.baseActivity.getApplicationContext(), message, Toast.LENGTH_LONG);
+	einToast.show();
+	FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+	LpgotoQuestionFragment llef = new LpgotoQuestionFragment();
+	llef.setBaseActivity(baseActivity);
+	fragmentTransaction.replace(R.id.fragmentcontainer, llef);
+	fragmentTransaction.addToBackStack(null);
+ 	fragmentTransaction.commit();
+	}
 	
 	private class learningPunktCreate extends AsyncTask<Void, Void, Void> {
 

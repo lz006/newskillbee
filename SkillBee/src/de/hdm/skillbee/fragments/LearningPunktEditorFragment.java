@@ -145,14 +145,13 @@ public class LearningPunktEditorFragment extends ListFragment implements OnItemC
     	this.selectednode=allnodes.elementAt(position);
     	FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
 		 Bundle args = new Bundle();
-		 args.putString("knotenbezeichnung", selectednode.getUeberschrift());
-		 args.putInt("knotenid", selectednode.getId());
-//		 LearninglineBearbeitenFragment llb = new LearninglineBearbeitenFragment();
-//    	llb.setBaseActivity(baseActivity);
-//    	llb.setArguments(args);
-//    	fragmentTransaction.replace(R.id.fragmentcontainer, llb);
-//    	fragmentTransaction.addToBackStack(null);
-//     	fragmentTransaction.commit();
+
+		 LearningPunktBearbeitenFragment lpb = new LearningPunktBearbeitenFragment();
+    	lpb.setKnoten(selectednode);
+		 lpb.setBaseActivity(baseActivity);
+    	fragmentTransaction.replace(R.id.fragmentcontainer, lpb);
+    	fragmentTransaction.addToBackStack(null);
+     	fragmentTransaction.commit();
     	
         
 }

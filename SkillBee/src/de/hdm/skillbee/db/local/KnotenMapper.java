@@ -46,16 +46,17 @@ public class KnotenMapper {
 				kn.setUeberschrift(c.getString(3));
 				kn.setInhalt(c.getString(4));
 				kn.setKurzInhalt(c.getString(5));
+				kn.setGoogleLink(c.getString(6));
+				kn.setYoutubeLink(c.getString(7));
 				
-				if (c.getInt(6) == 1) {
+				if (c.getInt(8) == 1) {
 					kn.setStatus(true);
 				}
 				else {
 					kn.setStatus(false);
 				}
-				kn.setPosition(c.getInt(7));
-				kn.setGoogleLink(c.getString(8));
-				kn.setYoutubeLink(c.getString(9));
+				kn.setPosition(c.getInt(9));
+				
 				
 				knoten.add(kn);
 			}
@@ -82,16 +83,17 @@ public class KnotenMapper {
 				kn.setUeberschrift(c.getString(3));
 				kn.setInhalt(c.getString(4));
 				kn.setKurzInhalt(c.getString(5));
+				kn.setGoogleLink(c.getString(6));
+				kn.setYoutubeLink(c.getString(7));
 				
-				if (c.getInt(6) == 1) {
+				if (c.getInt(8) == 1) {
 					kn.setStatus(true);
 				}
 				else {
 					kn.setStatus(false);
 				}
-				kn.setPosition(c.getInt(7));
-				kn.setGoogleLink(c.getString(8));
-				kn.setYoutubeLink(c.getString(9));
+				kn.setPosition(c.getInt(9));
+				
 				knoten.add(kn);
 			}
 			while (c.moveToNext());
@@ -112,17 +114,23 @@ public class KnotenMapper {
 
 		Cursor c = dbConLocal.readQuery("SELECT MAX(ID) AS maxid FROM Knoten;",null);
 		if (c.moveToFirst()) {
-			if (c.getInt(0) == 0) {
+			if (c.getCount() == 0) {
 				kn.setId(c.getInt(0));
 				
 				
 			}
+			else {
+				
+				if (c.getCount() > 0 && c.getInt(0) == 0) {	
+					
+					kn.setId(1);
+				}
 	
 			else {
 				
 				kn.setId(c.getInt(0)+1);
 				
-			}
+			}}
 		
 		}
 		
@@ -130,7 +138,7 @@ public class KnotenMapper {
 			
 		}
 		
-		dbConLocal.writeQuery("INSERT INTO Knoten (`id`, `llIDLoc`, `llIDOn`, `ueberschrift`, `inhalt`,`kurzInhalt`,`status`,`position`, `medienG`, `medienY`) VALUES ("+kn.getId()+", "+kn.getLlIDLoc()+", "+kn.getLlIDOn()+", '"+kn.getUeberschrift()+"', '"+kn.getInhalt()+"', '"+kn.getKurzInhalt()+"', "+status+", "+kn.getPosition()+", "+kn.getGoogleLink()+", "+kn.getYoutubeLink()+");");
+		dbConLocal.writeQuery("INSERT INTO Knoten (`id`, `llIDLoc`, `llIDOn`, `ueberschrift`, `inhalt`,`kurzInhalt`, `medienG`, `medienY`, `status`, `position`) VALUES ("+kn.getId()+", "+kn.getLlIDLoc()+", "+kn.getLlIDOn()+", '"+kn.getUeberschrift()+"', '"+kn.getInhalt()+"', '"+kn.getKurzInhalt()+"', '"+kn.getGoogleLink()+"', '"+kn.getYoutubeLink()+"', "+status+", "+kn.getPosition()+");");
 		
 		return kn;
 	}
@@ -160,10 +168,14 @@ public class KnotenMapper {
                       kn.setInhalt(c.getString(4));
 
                       kn.setKurzInhalt(c.getString(5));
+                      
+                      kn.setGoogleLink(c.getString(6));
+    					
+                      kn.setYoutubeLink(c.getString(7));
 
                       
-
-                      if (c.getInt(6) == 1) {
+                  int s =   c.getInt(8);
+                      if (c.getInt(8) == 1) {
 
                              kn.setStatus(true);
 
@@ -175,7 +187,9 @@ public class KnotenMapper {
 
                       }
 
-                      kn.setPosition(c.getInt(7));
+                      kn.setPosition(c.getInt(9));
+                      
+                     
 
                       knoten.add(kn);
 
@@ -205,7 +219,7 @@ public class KnotenMapper {
 		if (kn.isStatus()) {
 			status = 1;
 		}
-		dbConLocal.writeQuery("UPDATE Knoten SET llIDLoc="+kn.getLlIDLoc()+", llIDOn="+kn.getLlIDOn()+", ueberschrift='"+kn.getUeberschrift()+"', inhalt='"+kn.getInhalt()+"', kurzInhalt='"+kn.getKurzInhalt()+"', status="+status+", position="+kn.getPosition()+", medienG="+kn.getGoogleLink()+", medienY="+kn.getYoutubeLink()+" WHERE id="+kn.getId()+" AND llIDLoc="+kn.getLlIDLoc()+" AND llIDOn="+kn.getLlIDOn()+";");
+		dbConLocal.writeQuery("UPDATE Knoten SET llIDLoc="+kn.getLlIDLoc()+", llIDOn="+kn.getLlIDOn()+", ueberschrift='"+kn.getUeberschrift()+"', inhalt='"+kn.getInhalt()+"', kurzInhalt='"+kn.getKurzInhalt()+"', medienG='"+kn.getGoogleLink()+"', medienY='"+kn.getYoutubeLink()+"', status="+status+", position="+kn.getPosition()+"  WHERE id="+kn.getId()+" AND llIDLoc="+kn.getLlIDLoc()+" AND llIDOn="+kn.getLlIDOn()+";");
 				
 		return kn;
 	}
