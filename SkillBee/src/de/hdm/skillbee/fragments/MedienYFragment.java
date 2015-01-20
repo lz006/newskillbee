@@ -30,15 +30,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class LearningPunktInhaltFragment extends Fragment implements OnClickListener{
+public class MedienYFragment extends Fragment implements OnClickListener{
 	
 	
 	ControllerDBLokal cdbl = null;
 	ControllerDBServer cdbs = null;
+	private WebView webView; // Anlegen des Webview-Members.
 	
 	Knoten kn = null;
 
@@ -50,16 +52,31 @@ public class LearningPunktInhaltFragment extends Fragment implements OnClickList
 		cdbs = ControllerDBServer.get();
 		
 		
-		View v = inflater.inflate(R.layout.inhalt_lang_fragment, container, false);
+		View v = inflater.inflate(R.layout.medien_fragment, container, false);
 		
-		EditText lp = (EditText)v.findViewById(R.id.LearningKnotenBezeichnung);
-		EditText is = (EditText)v.findViewById(R.id.LearningKnotenInhaltLang);
 		
-		lp.setText(kn.getUeberschrift());
-		is.setText(kn.getInhalt());
+		
+		webView = (WebView) v.findViewById(R.id.webView1);
+        webView.getSettings().setJavaScriptEnabled(true); // Wichtig, damit jQuery funktioniert. 
+        webView.getSettings().setDomStorageEnabled(true);
+        
+        // Hier binden wir die index.html ein.
+        webView.loadUrl(kn.getYoutubeLink());
+		
+		
+		
+		
 		
 		
 		return v;
+		
+		
+    
+
+	
+	
+	 
+		
 		
 }
 

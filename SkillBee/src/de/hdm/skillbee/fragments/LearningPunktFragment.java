@@ -132,8 +132,27 @@ public void onClick(View v) {
         	fragmentTransaction.addToBackStack(null);
          	fragmentTransaction.commit();
         
-        	
-        	
+        case R.id.MedienG:
+         	
+        	MedienGFragment medg = new MedienGFragment();
+			
+        	medg.kn.setGoogleLink(kn.getGoogleLink());
+			medg.setBaseActivity(baseActivity);
+        	fragmentTransaction.replace(R.id.fragmentcontainer, medg);
+        	fragmentTransaction.addToBackStack(null);
+         	fragmentTransaction.commit();
+        
+        case R.id.MedienY:
+         	
+			MedienYFragment medy = new MedienYFragment();
+			
+			
+			medy.setBaseActivity(baseActivity);
+			medy.kn.setYoutubeLink(kn.getYoutubeLink());
+        	fragmentTransaction.replace(R.id.fragmentcontainer, medy);
+        	fragmentTransaction.addToBackStack(null);
+         	fragmentTransaction.commit();
+        
         	
         break;
         }
@@ -143,8 +162,6 @@ public void onClick(View v) {
 		
 		this.kn = kn;
 		
-		
-
 		
 	}
 	
