@@ -7,6 +7,7 @@ import de.hdm.skillbee.bo.Knoten;
 import de.hdm.skillbee.bo.Learningline;
 import de.hdm.skillbee.controller.ControllerDBLokal;
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.graphics.Bitmap;
@@ -87,16 +88,17 @@ public class LearningLineFragment extends Fragment {
 				final int j = pointer;
 				@Override
 				public void onClick(View v) {
-					
+			    	FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+
 					String number = knotenVector.elementAt(j).getUeberschrift();
-					//Toast einToast = Toast.makeText(LearningLineFragment.this.getActivity(), number, Toast.LENGTH_SHORT);
-					//einToast.show();
+//					Toast einToast = Toast.makeText(LearningLineFragment.this.getActivity(), number, Toast.LENGTH_SHORT);
+//					einToast.show();
 					
-					//LearnunkingPtFragment lpf = new LearningPunktFragment();
-		        	//fragmentTransaction.replace(R.id.fragmentcontainer, lpf);
-		        	//fragmentTransaction.addToBackStack(null);
-		         	//fragmentTransaction.commit();
-					//lpg.setKnoten(knotenVector.elementAt(j));
+					LearningPunktFragment lpf = new LearningPunktFragment();
+		        	fragmentTransaction.replace(R.id.fragmentcontainer, lpf);
+		        	fragmentTransaction.addToBackStack(null);
+		         	fragmentTransaction.commit();
+		         	lpf.setKnoten(knotenVector.elementAt(j));
 					
 				}
 				

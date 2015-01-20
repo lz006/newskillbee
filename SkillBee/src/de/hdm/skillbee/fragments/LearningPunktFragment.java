@@ -33,6 +33,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LearningPunktFragment extends Fragment implements OnClickListener{
@@ -46,9 +47,8 @@ public class LearningPunktFragment extends Fragment implements OnClickListener{
 	
 	
 	Knoten kn = null;
-	String MedienG = null;
-	String MedienY = null;
-	String LearningInhaltLong = null;
+	
+	
 
 	 public void setBaseActivity(Activity baseActivity) {
 			this.baseActivity = baseActivity;
@@ -69,11 +69,11 @@ public class LearningPunktFragment extends Fragment implements OnClickListener{
 		
 		
 		
-		View v = inflater.inflate(R.layout.learningpunkt_fragment, container, false);
-		Button InhaltLong = (Button) v.findViewById(R.id.InhaltShort);
-		InhaltLong.setOnClickListener(this);
+		View v = inflater.inflate(R.layout.learningpunkt2_fragment, container, false);
+//		Button InhaltLong = (Button) v.findViewById(R.id.InhaltShort);
+//		InhaltLong.setOnClickListener(this);
 		
-		Button InhaltLong2 = (Button) v.findViewById(R.id.LearningInhaltLong);
+		Button InhaltLong2 = (Button) v.findViewById(R.id.LearningInhaltLong2);
 		InhaltLong2.setOnClickListener(this);
 		
 		Button MedienG = (Button) v.findViewById(R.id.MedienG);
@@ -83,14 +83,19 @@ public class LearningPunktFragment extends Fragment implements OnClickListener{
 		MedienY.setOnClickListener(this);
 	
 		
-		EditText lp = (EditText)v.findViewById(R.id.LearningPunkt);
-		EditText is = (EditText)v.findViewById(R.id.InhaltShort);
+		TextView lp = (TextView)v.findViewById(R.id.LearningPunkt2);
+
 		
 		lp.setText(kn.getUeberschrift());
-		is.setText(kn.getKurzInhalt());
+
 		
+		TextView ihaltshort = (TextView)v.findViewById(R.id.InhaltShort);
+
+		//in your OnCreate() method
+		ihaltshort.setText(kn.getKurzInhalt());
+		ihaltshort.setClickable(true);
 		
-		
+		ihaltshort.setOnClickListener(this);
 		
 		
 
@@ -114,7 +119,7 @@ public void onClick(View v) {
 		
         switch (v.getId()) {
 
-        case R.id.LearningInhaltLong:
+        case R.id.LearningInhaltLong2:
         	             	
 			LearningPunktInhaltFragment lpif = new LearningPunktInhaltFragment();
 			lpif.setKnoten(kn);

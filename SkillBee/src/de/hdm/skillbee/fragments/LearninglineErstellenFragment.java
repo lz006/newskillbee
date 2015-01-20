@@ -121,7 +121,7 @@ public class LearninglineErstellenFragment extends Fragment implements OnClickLi
         	
         	learningline = cdbl.getLearninglineMapper().insert(learningline);
         	
-	       	new learningCreate().execute();        
+	//       	new learningCreate().execute();        
 	       	
         break;
         }

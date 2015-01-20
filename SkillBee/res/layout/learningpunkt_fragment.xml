@@ -1,53 +1,70 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/b"
-    android:layout_height="match_parent"
-    
-    tools:context="${relativePackage}.${activityClass}" >
+    android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/InhaltShort"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:gravity="center_vertical|center_horizontal"
-        android:hint="Click" />
+        
 
-    <TextView
-        android:id="@+id/LearningPunkt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:hint="Learningline"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+
 
     <Button
         android:id="@+id/LearningInhaltLong"
-        style="@drawable/logo"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/InhaltShort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button1"
+        android:layout_alignBottom="@+id/button1"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp" />
+        android:text="Button" />
 
     <Button
         android:id="@+id/MedienG"
-        style="@drawable/logo"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/InhaltShort"
-        android:layout_toLeftOf="@+id/InhaltShort" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_toRightOf="@+id/LearningPunkt"
+        android:text="Button" />
 
     <Button
         android:id="@+id/MedienY"
-        style="@drawable/logo"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_above="@+id/InhaltShort"
-        android:layout_toRightOf="@+id/InhaltShort" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/LearningInhaltLong"
+        android:layout_alignRight="@+id/button1"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/button4"
+        android:layout_alignLeft="@+id/LearningPunkt"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/button5"
+        android:layout_alignRight="@+id/MedienY"
+        android:text="Button" />
+
+    <EditText
+        android:id="@+id/InhaltShort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/LearningPunkt"
+        android:layout_alignLeft="@+id/button4"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/LearningPunkt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button1"
+        android:layout_alignLeft="@+id/button1"
+        android:ems="10" />
 
 </RelativeLayout>

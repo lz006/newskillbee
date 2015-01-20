@@ -17,6 +17,8 @@ import org.json.JSONObject;
 
 import de.hdm.skillbee.bo.Kategorie;
 import de.hdm.skillbee.controller.ControllerDBLokal;
+import de.hdm.skillbee.fragments.LearningLineOverviewFragment;
+import de.hdm.skillbee.fragments.LpgotoQuestionFragment;
 import de.hdm.skillbee.fragments.MainMenuFragment;
 import de.hdm.skillbee.fragments.UserLogOrRegFragment;
 import de.hdm.skillbee.fragments.UserLoginFragment;
@@ -36,6 +38,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -113,10 +116,39 @@ public class SkillBeeActivity extends Activity {
     @Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle presses on the action bar items
-	    switch (item.getItemId()) {
-	        case R.id.action_settings:
-	            openSettings();
-	            return true;
+    	FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+    	switch (item.getItemId()) {
+	        
+	    
+	    	case R.id.action_settings:
+	        	
+	        case R.id.submenu1:
+	        	LearningLineOverviewFragment llof= new LearningLineOverviewFragment();
+	        	llof.setBaseActivity(this);
+	        	fragmentTransaction.replace(R.id.fragmentcontainer, llof);
+	        	fragmentTransaction.addToBackStack(null);
+	         	fragmentTransaction.commit();
+	        	
+	        	
+	        	return true;
+	        case R.id.submenu2:
+	        	
+	        	LpgotoQuestionFragment lqf= new LpgotoQuestionFragment();
+	        	lqf.setBaseActivity(this);
+	        	fragmentTransaction.replace(R.id.fragmentcontainer, lqf);
+	        	fragmentTransaction.addToBackStack(null);
+	         	fragmentTransaction.commit();
+	        	
+	        	return true;
+//	        case R.id.submenu3:
+//	        	
+//	        	StoreFragment mmf= new StoreFragment();
+//	        	mmf.setBaseActivity(this);
+//	        	fragmentTransaction.replace(R.id.fragmentcontainer, mmf);
+//	        	fragmentTransaction.addToBackStack(null);
+//	         	fragmentTransaction.commit();
+//	        	
+//	            return true;
 	        case R.id.action_share:
 	        	return true;
 	        
@@ -126,16 +158,7 @@ public class SkillBeeActivity extends Activity {
 	}
 
 
-private void openSettings() {
-		// TODO Auto-generated method stub
-		
-	}
 
-
-private void openSearch() {
-	// TODO Auto-generated method stub
-	
-}
     
     
 //    public void replaceFragment(Fragment fragment)
