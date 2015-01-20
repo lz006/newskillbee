@@ -60,6 +60,10 @@ public class LearninglineMapper {
 		return new String("SELECT MAX(idOn) AS maxid FROM LearningLine;");	
 	}
 	
+	public String llIDQuery(Learningline ll) {
+		return new String("SELECT MAX(idOn) AS maxid FROM LearningLine WHERE authorID="+ll.getAuthorID()+";");
+	}
+	
 	public Vector<Learningline> json2Learningline(JSONObject json) {
 		Vector<Learningline> lls = new Vector<Learningline>();
 		

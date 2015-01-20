@@ -17,6 +17,8 @@ import org.json.JSONObject;
 
 import de.hdm.skillbee.bo.Kategorie;
 import de.hdm.skillbee.controller.ControllerDBLokal;
+import de.hdm.skillbee.fragments.LearningLineOverviewFragment;
+import de.hdm.skillbee.fragments.LpgotoQuestionFragment;
 import de.hdm.skillbee.fragments.MainMenuFragment;
 import de.hdm.skillbee.fragments.UserLogOrRegFragment;
 import de.hdm.skillbee.fragments.UserLoginFragment;
@@ -126,16 +128,8 @@ public class SkillBeeActivity extends Activity {
 	}
 
 
-private void openSettings() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-private void openSearch() {
-	// TODO Auto-generated method stub
-	
-}
+    
+    
     
     
 //    public void replaceFragment(Fragment fragment)

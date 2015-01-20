@@ -73,12 +73,12 @@ public class MainMenuFragment extends ListFragment implements OnItemClickListene
         {
         case 0: 
         	
-        LearningLineOverviewFragment llof = new LearningLineOverviewFragment();
-    	llof.setBaseActivity(baseActivity);
-    	fragmentTransaction.replace(R.id.fragmentcontainer, llof);
-    	fragmentTransaction.addToBackStack(null);
-     	fragmentTransaction.commit();
-     	break;
+	        LearningLineOverviewFragment llof = new LearningLineOverviewFragment();
+	    	llof.setBaseActivity(baseActivity);
+	    	fragmentTransaction.replace(R.id.fragmentcontainer, llof);
+	    	fragmentTransaction.addToBackStack(null);
+	     	fragmentTransaction.commit();
+	     	break;
         case 1:
         	LpgotoQuestionFragment lpgo = new LpgotoQuestionFragment();
         	lpgo.setBaseActivity(baseActivity);
@@ -86,6 +86,16 @@ public class MainMenuFragment extends ListFragment implements OnItemClickListene
         	fragmentTransaction.addToBackStack(null);
          	fragmentTransaction.commit();
          	break;
+         	
+        case 2:
+        	StoreFragment sf = new StoreFragment();
+        	sf.setBaseActivity(baseActivity);
+        	fragmentTransaction.replace(R.id.fragmentcontainer, sf);
+        	fragmentTransaction.addToBackStack(null);
+         	fragmentTransaction.commit();
+         	break;
+         	
+         	
        default: Toast.makeText(getActivity(),"???",Toast.LENGTH_SHORT).show();
        			break;
         }
