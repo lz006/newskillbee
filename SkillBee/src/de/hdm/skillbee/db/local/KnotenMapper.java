@@ -111,7 +111,7 @@ public class KnotenMapper {
 			status = 1;
 		}
 		
-
+	
 		Cursor c = dbConLocal.readQuery("SELECT MAX(ID) AS maxid FROM Knoten;",null);
 		if (c.moveToFirst()) {
 			if (c.getCount() == 0) {
@@ -141,6 +141,11 @@ public class KnotenMapper {
 		dbConLocal.writeQuery("INSERT INTO Knoten (`id`, `llIDLoc`, `llIDOn`, `ueberschrift`, `inhalt`,`kurzInhalt`, `medienG`, `medienY`, `status`, `position`) VALUES ("+kn.getId()+", "+kn.getLlIDLoc()+", "+kn.getLlIDOn()+", '"+kn.getUeberschrift()+"', '"+kn.getInhalt()+"', '"+kn.getKurzInhalt()+"', '"+kn.getGoogleLink()+"', '"+kn.getYoutubeLink()+"', "+status+", "+kn.getPosition()+");");
 		
 		return kn;
+	}
+	
+	public void updateAfterRelease(Learningline ll) {
+		dbConLocal.writeQuery("UPDATE Knoten SET llIDOn="+ll.getIdOn()+"  WHERE llIDLoc="+ll.getId()+" AND llIDOn="+0+";");
+		
 	}
 	
 	public Vector<Knoten> findByLL(Learningline ll) {
@@ -226,6 +231,11 @@ public class KnotenMapper {
 
 	public void delete(Knoten kn) {
 		dbConLocal.writeQuery("DELETE FROM Knoten WHERE id="+kn.getId()+" AND llIDLoc="+kn.getLlIDLoc()+" AND llIDOn="+kn.getLlIDOn()+";");
+		
+	}
+	
+	public void deleteByLL(Learningline ll) {
+		dbConLocal.writeQuery("DELETE FROM Knoten WHERE llIDLoc="+ll.getId()+" AND llIDOn="+ll.getIdOn()+";");
 		
 	}
 

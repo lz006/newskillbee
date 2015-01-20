@@ -121,7 +121,20 @@ public class LearninglineErstellenFragment extends Fragment implements OnClickLi
         	
         	learningline = cdbl.getLearninglineMapper().insert(learningline);
         	
+
 	//       	new learningCreate().execute();        
+
+	       	//new learningCreate().execute();
+        	
+        	Toast einToast = Toast.makeText(LearninglineErstellenFragment.this.baseActivity.getApplicationContext(), "Neue Learningline erfolgreich erstellt", Toast.LENGTH_LONG);
+			einToast.show();
+			FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+			MainMenuFragment mf = new MainMenuFragment();
+        	mf.setBaseActivity(baseActivity);
+        	fragmentTransaction.replace(R.id.fragmentcontainer, mf);
+        	fragmentTransaction.addToBackStack(null);
+         	fragmentTransaction.commit();
+
 	       	
         break;
         }

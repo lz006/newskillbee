@@ -37,7 +37,7 @@ public class LearninglineMapper {
 			
 		Vector<Learningline> lls = new Vector<Learningline>();
 		
-		Cursor c = dbConLocal.readQuery("SELECT * FROM Learningline WHERE id IN (" + ids.toString() + ")",null);
+		Cursor c = dbConLocal.readQuery("SELECT * FROM Learningline WHERE idLoc IN (" + ids.toString() + ")",null);
 		if (c.moveToFirst()) {
 			do {
 				Learningline ll = new Learningline();
@@ -64,6 +64,32 @@ public class LearninglineMapper {
 		
 		return lls;
 	
+	}
+	
+	public Learningline findByCompositeKey(int idloc, int idon) {
+		Cursor c = dbConLocal.readQuery("SELECT * FROM Learningline WHERE idLoc="+idloc+" AND idOn="+idon,null);
+		
+		if (c.moveToFirst()) {
+			Learningline ll = new Learningline();
+			ll.setId(c.getInt(0));
+			ll.setIdOn(c.getInt(1));
+			
+			if (c.getInt(2) == 1) {
+				ll.setStatus(true);
+			}
+			else {
+				ll.setStatus(false);
+			}
+			ll.setFortschritt(c.getInt(3));
+			ll.setAuthorID(c.getInt(4));
+			ll.setKategorieID(c.getInt(5));
+			ll.setBezeichnung(c.getString(6));
+			
+			return ll;
+		}
+		else {
+			return null;
+		}
 	}
 
 	public Vector<Learningline> findAll() {
@@ -110,7 +136,7 @@ public class LearninglineMapper {
 		if (ll.isStatus()) {
 			status = 1;
 		}
-		dbConLocal.writeQuery("INSERT INTO Learningline (`idOn`, `status`, `fortschritt`, `authorID`,`kategorieID`,`bezeichnung`) VALUES ("+ll.getIdOn()+", "+status+", "+ll.getFortschritt()+", "+ll.getAuthorID()+", "+ll.getKategorieID()+", '"+ ll.getBezeichnung() +"');");
+		dbConLocal.writeQuery("INSERT INTO Learningline (`idLoc`, `idOn`, `status`, `fortschritt`, `authorID`,`kategorieID`,`bezeichnung`) VALUES ("+ll.getId()+", "+ll.getIdOn()+", "+status+", "+ll.getFortschritt()+", "+ll.getAuthorID()+", "+ll.getKategorieID()+", '"+ ll.getBezeichnung() +"');");
 		
 		return ll;
 	}
@@ -130,9 +156,10 @@ public class LearninglineMapper {
 					
 				ll.setId(c.getInt(0));
 				
-				
-				
+	
 			}
+			
+		
 			
 			else {
 			

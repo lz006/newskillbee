@@ -116,6 +116,7 @@ public class SkillBeeActivity extends Activity {
     @Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle presses on the action bar items
+
     	FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
     	switch (item.getItemId()) {
 	        
@@ -140,6 +141,8 @@ public class SkillBeeActivity extends Activity {
 	         	fragmentTransaction.commit();
 	        	
 	        	return true;
+	        default: return false;
+    	}
 //	        case R.id.submenu3:
 //	        	
 //	        	StoreFragment mmf= new StoreFragment();
@@ -149,17 +152,9 @@ public class SkillBeeActivity extends Activity {
 //	         	fragmentTransaction.commit();
 //	        	
 //	            return true;
-	        case R.id.action_share:
-	        	return true;
-	        
-	        default:
-	            return super.onOptionsItemSelected(item);
-	    }
-	}
 
+	 
 
-
-    
     
 //    public void replaceFragment(Fragment fragment)
 //    {
@@ -171,5 +166,5 @@ public class SkillBeeActivity extends Activity {
 //     	fragmentTransaction.commit();
 //        
 //    }
-    
-}
+    }       }      
+

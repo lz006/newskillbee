@@ -119,7 +119,7 @@ public class UserRegistrationFragment extends Fragment implements OnClickListene
 				int success = json.getInt("success");
 
 				if (success != 1) {
-					// Success = 0 -> Means that password and user are not in use
+					// Success = 1 -> Means that password and user are not in use
 				} else {
 					userMsg = "Nutzername und Passwort sind bereits in Verwendung";
 					useralreadyexists=true;

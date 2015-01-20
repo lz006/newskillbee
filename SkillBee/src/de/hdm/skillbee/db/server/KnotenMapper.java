@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import de.hdm.skillbee.bo.Knoten;
+import de.hdm.skillbee.bo.Learningline;
 
 /**
  * Klasse um Knoten-Objekte auf die Server-DB
@@ -16,21 +17,12 @@ import de.hdm.skillbee.bo.Knoten;
  */
 public class KnotenMapper {
 	
-	public String findByKeysQuery(Vector<Integer> keys) {
-		StringBuffer ids = new StringBuffer();
+	public String findByLLOnIDQuery(int llonid) {
 		
-		if (keys.size() > 1) {
-			for (int i = 0; i < keys.size()-1; i++) {
-			ids.append(keys.elementAt(i));	
-			ids.append(",");
-			}		
-		}
-			
-		ids.append(keys.elementAt(keys.size()-1));		
-		
-		return new String("SELECT * FROM Knoten WHERE id IN (" + ids.toString() + ")");
+		return new String("SELECT * FROM Knoten WHERE llIDOn="+llonid);
 	
 	}
+	
 
 	public String findAllQuery() {					
 		return new String("SELECT * FROM Knoten");
@@ -55,6 +47,11 @@ public class KnotenMapper {
 
 	public String deleteQuery(Knoten kn) {
 		return new String("DELETE FROM Knoten WHERE id="+kn.getId()+" AND llIDLoc="+kn.getLlIDLoc()+" AND llIDOn="+kn.getLlIDOn()+";");
+		
+	}
+	
+	public String deleteByLLQuery(Learningline ll) {
+		return new String("DELETE FROM Knoten WHERE llIDOn="+ll.getIdOn()+";");
 		
 	}
 	
