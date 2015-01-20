@@ -143,6 +143,11 @@ public class KnotenMapper {
 		return kn;
 	}
 	
+	public void updateAfterRelease(Learningline ll) {
+		dbConLocal.writeQuery("UPDATE Knoten SET llIDOn="+ll.getIdOn()+"  WHERE llIDLoc="+ll.getId()+" AND llIDOn="+0+";");
+		
+	}
+	
 	public Vector<Knoten> findByLL(Learningline ll) {
 
         

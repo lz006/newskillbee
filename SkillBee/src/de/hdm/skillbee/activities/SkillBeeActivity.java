@@ -117,7 +117,7 @@ public class SkillBeeActivity extends Activity {
 	    // Handle presses on the action bar items
 	    switch (item.getItemId()) {
 	        case R.id.action_settings:
-	            openSettings();
+	            //openSettings();
 	            return true;
 	        case R.id.action_share:
 	        	return true;
