@@ -51,6 +51,7 @@ public class LearningLineFragment extends Fragment {
 				
 		cdbl = ControllerDBLokal.get();
 		rl = (RelativeLayout)v.findViewById(R.id.buttonpanel);
+		pointer=0;
 		buildLL();
 			
 		return v;
@@ -93,7 +94,7 @@ public class LearningLineFragment extends Fragment {
 					public void onClick(View v) {
 				    	FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
 
-						String number = knotenVector.elementAt(j).getUeberschrift();
+					//	String number = knotenVector.elementAt(j).getUeberschrift();
 //						Toast einToast = Toast.makeText(LearningLineFragment.this.getActivity(), number, Toast.LENGTH_SHORT);
 //						einToast.show();
 						
