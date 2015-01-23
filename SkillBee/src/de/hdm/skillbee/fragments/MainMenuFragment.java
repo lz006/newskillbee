@@ -95,6 +95,15 @@ public class MainMenuFragment extends ListFragment implements OnItemClickListene
          	fragmentTransaction.commit();
          	break;
          	
+        case 3:
+        	Us_Fragment us = new Us_Fragment();
+        	us.setBaseActivity(baseActivity);
+        	fragmentTransaction.replace(R.id.fragmentcontainer, us);
+        	fragmentTransaction.addToBackStack(null);
+         	fragmentTransaction.commit();
+         	break;
+         	
+         	
          	
        default: Toast.makeText(getActivity(),"???",Toast.LENGTH_SHORT).show();
        			break;

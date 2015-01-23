@@ -20,6 +20,7 @@ import de.hdm.skillbee.controller.ControllerDBLokal;
 import de.hdm.skillbee.fragments.LearningLineOverviewFragment;
 import de.hdm.skillbee.fragments.LpgotoQuestionFragment;
 import de.hdm.skillbee.fragments.MainMenuFragment;
+import de.hdm.skillbee.fragments.StoreFragment;
 import de.hdm.skillbee.fragments.UserLogOrRegFragment;
 import de.hdm.skillbee.fragments.UserLoginFragment;
 import de.hdm.skillbee.fragments.UserRegistrationFragment;
@@ -141,19 +142,19 @@ public class SkillBeeActivity extends Activity {
 	         	fragmentTransaction.commit();
 	        	
 	        	return true;
-	        default: return false;
+	        
+    
+	        case R.id.submenu3:
+	        	
+	        	StoreFragment sf= new StoreFragment();
+	        	sf.setBaseActivity(this);
+	        	fragmentTransaction.replace(R.id.fragmentcontainer, sf);
+	        	fragmentTransaction.addToBackStack(null);
+	         	fragmentTransaction.commit();
+	        	
+	            return true;
+	        	default: return false;
     	}
-//	        case R.id.submenu3:
-//	        	
-//	        	StoreFragment mmf= new StoreFragment();
-//	        	mmf.setBaseActivity(this);
-//	        	fragmentTransaction.replace(R.id.fragmentcontainer, mmf);
-//	        	fragmentTransaction.addToBackStack(null);
-//	         	fragmentTransaction.commit();
-//	        	
-//	            return true;
-
-	 
 
     
 //    public void replaceFragment(Fragment fragment)

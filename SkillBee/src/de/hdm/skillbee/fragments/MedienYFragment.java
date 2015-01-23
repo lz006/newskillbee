@@ -61,7 +61,7 @@ public class MedienYFragment extends Fragment implements OnClickListener{
         webView.getSettings().setDomStorageEnabled(true);
         
         // Hier binden wir die index.html ein.
-        webView.loadUrl(kn.getYoutubeLink());
+        webView.loadUrl("http://" + kn.getYoutubeLink());
 		
 		
 		

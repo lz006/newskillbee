@@ -56,17 +56,19 @@ public class MedienGFragment extends Fragment implements OnClickListener{
 		
 
 		webView = (WebView) v.findViewById(R.id.webView1);
-        webView.getSettings().setJavaScriptEnabled(true); // Wichtig, damit jQuery funktioniert. 
-        webView.getSettings().setDomStorageEnabled(true);
+        webView.getSettings().setJavaScriptEnabled(false); // Wichtig, damit jQuery funktioniert. 
+        webView.getSettings().setDomStorageEnabled(false);
         
         // Hier binden wir die index.html ein.
-        webView.loadUrl(kn.getGoogleLink());
+        webView.loadUrl("http://" + kn.getGoogleLink());
 		
 		
 		
 		return v;
 		
 }
+	
+
 
 	@Override
 	public void onClick(View v) {

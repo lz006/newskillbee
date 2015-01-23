@@ -69,7 +69,7 @@ public class LearningPunktFragment extends Fragment implements OnClickListener{
 		
 		
 		
-		View v = inflater.inflate(R.layout.learningpunkt2_fragment, container, false);
+		View v = inflater.inflate(R.layout.learningpunkt_fragment, container, false);
 //		Button InhaltLong = (Button) v.findViewById(R.id.InhaltShort);
 //		InhaltLong.setOnClickListener(this);
 		
@@ -127,6 +127,8 @@ public void onClick(View v) {
         	fragmentTransaction.replace(R.id.fragmentcontainer, lpif);
         	fragmentTransaction.addToBackStack(null);
          	fragmentTransaction.commit();
+         	
+         	break;
         
         case R.id.InhaltShort:
          	
@@ -136,30 +138,35 @@ public void onClick(View v) {
         	fragmentTransaction.replace(R.id.fragmentcontainer, lpif2);
         	fragmentTransaction.addToBackStack(null);
          	fragmentTransaction.commit();
+         	
+         	break;
         
         case R.id.MedienG:
          	
         	MedienGFragment medg = new MedienGFragment();
 			
-        	medg.kn.setGoogleLink(kn.getGoogleLink());
+        	medg.setKnoten(kn);
 			medg.setBaseActivity(baseActivity);
         	fragmentTransaction.replace(R.id.fragmentcontainer, medg);
         	fragmentTransaction.addToBackStack(null);
          	fragmentTransaction.commit();
         
+         	break;
+         	
         case R.id.MedienY:
          	
 			MedienYFragment medy = new MedienYFragment();
 			
 			
 			medy.setBaseActivity(baseActivity);
-			medy.kn.setYoutubeLink(kn.getYoutubeLink());
+			medy.setKnoten(kn);
         	fragmentTransaction.replace(R.id.fragmentcontainer, medy);
         	fragmentTransaction.addToBackStack(null);
          	fragmentTransaction.commit();
         
         	
         break;
+        default: break;
         }
 	}
 	

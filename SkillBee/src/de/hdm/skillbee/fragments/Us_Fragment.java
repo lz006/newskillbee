@@ -35,11 +35,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class LearningPunktInhaltFragment extends Fragment implements OnClickListener{
+public class Us_Fragment extends Fragment implements OnClickListener{
 	
 	
-	ControllerDBLokal cdbl = null;
-	ControllerDBServer cdbs = null;
 	
 	Knoten kn = null;
 
@@ -47,17 +45,12 @@ public class LearningPunktInhaltFragment extends Fragment implements OnClickList
 	      /**
 	       * Inflate the layout for this fragment
 	       */
-		cdbl = ControllerDBLokal.get();
-		cdbs = ControllerDBServer.get();
 		
 		
-		View v = inflater.inflate(R.layout.inhalt_lang_fragment, container, false);
 		
-		TextView lp = (TextView)v.findViewById(R.id.LearningKnotenBezeichnung);
-		TextView is = (TextView)v.findViewById(R.id.LearningKnotenInhaltLang);
+		View v = inflater.inflate(R.layout.about_us_fragment, container, false);
 		
-		lp.setText(kn.getUeberschrift());
-		is.setText(kn.getInhalt());
+	
 		
 		
 		return v;
@@ -72,13 +65,7 @@ public class LearningPunktInhaltFragment extends Fragment implements OnClickList
 		
 	}
 	
-public void setKnoten(Knoten kn) {
-		
-		this.kn = kn;
-		
-		
-	}
-	
+
 			
 		
 		

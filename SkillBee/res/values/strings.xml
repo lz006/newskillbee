@@ -26,6 +26,12 @@
     </array>
     
     
+    <array name="icons_store">
+        <item>@drawable/up</item>
+        <item>@drawable/down</item>
+    </array>
+    
+    
       
       <string-array name="kategories">
         <item>Programmierung</item>

@@ -1,0 +1,154 @@
+
+    
+     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+         <ScrollView
+             android:id="@+id/scrollView1"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content" >
+             
+              
+
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:orientation="vertical" >
+                 
+                 
+                 
+                 
+                  <TextView
+                 android:id="@+id/textView1"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="5dp"
+                 android:layout_marginLeft="20dp"
+                 android:layout_marginRight="20dp"
+                 android:text="Das Entwicklerteam arbeitet im Rahmen des Studiums Wirtschaftsinformatik und digitale Medien an der Hochschule der Medien seit dem Jahr 2012 vorwiegend in Teams mit stets herausragenden Leistungen zusammen." />
+             
+                   
+                  <TextView
+                 android:id="@+id/textView2"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="5dp"
+                 android:layout_marginLeft="20dp"
+                 android:layout_marginRight="20dp"
+                 android:text="Die Zielstrebigkeit und gemeinsame Ziele haben uns in den vergangenen Jahren nicht nur beruflich sondern auch privat zu einer Einheit verschmelzen lassen." />
+                      <TextView
+                 android:id="@+id/textView3"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="5dp"
+                 android:layout_marginLeft="20dp"
+                 android:layout_marginRight="20dp"
+                 android:text="Dabei sind trotz unterschiedlicher Charaktere die Ziele klar gesteckt und jeder arbeitet mit Leidenschaft auf diese hin." />
+                          <TextView
+                 android:id="@+id/textView4"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="5dp"
+                 android:layout_marginLeft="20dp"
+                 android:layout_marginRight="20dp"
+                 android:text="Unterschiedliche Lebenswege haben unsere Stärken und Schwächen bisher geprägt. So hat manch einer schon Berufserfahrungen (auch in Selbständigkeit) gesammelt oder eine abgeschlossene Berufsausbildung hinter sich." />
+                              <TextView
+                 android:id="@+id/textView5"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="5dp"
+                 android:layout_marginLeft="20dp"
+                 android:layout_marginRight="20dp"
+                 android:text="Kernkompetenzen sind in jedem für uns relevanten Tätigkeitsgebiete vorhanden. Durch die Möglichkeit Schwerpunkte im Laufe des Studiums, in den Bereichen der BWL-, der IT-, oder der Medien zu setzen, sind die Kompetenzen derzeit unterschiedlich stark ausgeprägt aber dennoch bei mindestens einem der Gründer gefestigt." />
+                                  <TextView
+                 android:id="@+id/textView6"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="5dp"
+                 android:layout_marginLeft="20dp"
+                 android:layout_marginRight="20dp"
+                 android:text="Das Entwicklerteam besteht aus folgenden 7 Personen:" />
+
+                           
+        
+                                          <TextView
+                                              android:id="@+id/textView7"
+                                              android:layout_width="wrap_content"
+                                              android:layout_height="wrap_content"
+                                              android:layout_marginLeft="20dp"
+                                              android:layout_marginRight="20dp"
+                                              android:text="➢ Julia Glück"/>
+                                          
+                                          
+                                          <TextView
+                                              android:id="@+id/textView8"
+                                              android:layout_width="wrap_content"
+                                              android:layout_height="wrap_content"
+                                              android:layout_marginLeft="20dp"
+                                              android:layout_marginRight="20dp"
+                                              android:text="➢ Mathias Zimmermann" />
+                                          
+                                          
+                                          <TextView
+                                              android:id="@+id/textView9"
+                                              android:layout_width="wrap_content"
+                                              android:layout_height="wrap_content"
+                                              android:layout_marginLeft="20dp"
+                                              android:layout_marginRight="20dp"
+                                              android:text="➢ Lucas Zanella" />
+                                          
+                                          
+                                          <TextView
+                                              android:id="@+id/textView10"
+                                              android:layout_width="wrap_content"
+                                              android:layout_height="wrap_content"
+                                              android:layout_marginLeft="20dp"
+                                              android:layout_marginRight="20dp"
+                                              android:text="➢ Stefan Sonntag" />
+                                          
+                                          <TextView
+                                              android:id="@+id/textView11"
+                                              android:layout_width="wrap_content"
+                                              android:layout_height="wrap_content"
+                                              android:layout_marginLeft="20dp"
+                                              android:layout_marginRight="20dp"
+                                              android:text="➢ Tobias Moser" />
+                                          
+                                          <TextView
+                                              android:id="@+id/textView12"
+                                              android:layout_width="wrap_content"
+                                              android:layout_height="wrap_content"
+                                              android:layout_marginLeft="20dp"
+                                              android:layout_marginRight="20dp"
+                                              android:text="➢ Timm Roth" />
+                                          
+                                          <TextView
+                                              android:id="@+id/textView13"
+                                              android:layout_width="wrap_content"
+                                              android:layout_height="wrap_content"
+                                              android:layout_marginLeft="20dp"
+                                              android:layout_marginRight="20dp"
+                                              android:text="➢ Björn Zimmermann" />
+                                          
+                                           <TextView
+                                              android:id="@+id/textView14"
+                                              android:layout_width="wrap_content"
+                                              android:layout_height="40dp"
+                                              android:layout_marginLeft="20dp"
+                                              android:layout_marginRight="20dp"
+                                              android:text="" />
+                                          
+                                         
+                                      
+                                          
+                                          
+</LinearLayout>
+
+         </ScrollView>
+         
+    </LinearLayout>
+

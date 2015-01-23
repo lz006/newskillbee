@@ -154,7 +154,7 @@ public class KnotenMapper {
 
         Vector<Knoten> knoten = new Vector<Knoten>();
 
-        Cursor c = dbConLocal.readQuery("SELECT * FROM Knoten WHERE llIDLoc="+ll.getId()+"  AND llIDOn="+ll.getIdOn(),null);
+        Cursor c = dbConLocal.readQuery("SELECT * FROM Knoten WHERE llIDLoc="+ll.getId()+"  AND llIDOn="+ll.getIdOn() +  "  ORDER BY position ",null);
 
         if (c.moveToFirst()) {
 

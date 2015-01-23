@@ -47,7 +47,7 @@ public class StoreFragment extends Fragment implements OnItemClickListener {
 
 
         menutitles = new String[2];
-        menuIcons = getResources().obtainTypedArray(R.array.icons);
+        menuIcons = getResources().obtainTypedArray(R.array.icons_store);
         
         menutitles[0] = "Download";
         menutitles[1] = "Upload";
