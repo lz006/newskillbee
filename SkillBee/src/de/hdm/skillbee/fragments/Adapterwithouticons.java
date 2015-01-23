@@ -6,6 +6,8 @@ import de.hdm.skillbee.R;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
+import android.provider.CalendarContract.Colors;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +59,8 @@ public class Adapterwithouticons extends BaseAdapter {
         RowItemLLOverview row_pos = rowItemlloverview.get(position);
         // setting the image resource and title
         txtTitle.setText(row_pos.getTitle());
+        
+        txtTitle.setTextColor(Color.parseColor("#FFCC00"));
 
         return convertView;
 

@@ -18,17 +18,17 @@
     </string-array>
 
     <array name="icons">
-        <item>@drawable/uebersicht</item>
-        <item>@drawable/editor</item>
-        <item>@drawable/store</item>
+        <item>@drawable/b3</item>
+        <item>@drawable/b4</item>
+        <item>@drawable/b5</item>
       
-        <item>@drawable/us</item>
+        <item>@drawable/b6</item>
     </array>
     
     
     <array name="icons_store">
-        <item>@drawable/up</item>
-        <item>@drawable/down</item>
+        <item>@drawable/b1</item>
+        <item>@drawable/b2</item>
     </array>
     
     
