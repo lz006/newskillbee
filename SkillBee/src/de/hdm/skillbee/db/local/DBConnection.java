@@ -6,18 +6,32 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
+/**
+ * 
+ * @author Moser, Roth, Sonntag, Zanella, Zimmermann
+ *
+ */
+
 public class DBConnection extends SQLiteOpenHelper {
 
 	private SQLiteDatabase db;
 	private Context con;
 	
+	/**
+	 * Baut die Verbindung zur lokalen Datenbank in Verbindung mit der 
+	 * Hauptaktivität und dem Datenbanknamen auf
+	 * @param activity
+	 * @param dbName
+	 */
 	public DBConnection(Context activity, String dbName) {
 		super(activity, dbName, null, 1);
 		db = getWritableDatabase();
 		//onCreate(db);
 		con = activity;
 	}
-	
+	/**
+	 * Erzeugt die verschiedenen Tabellen der lokalen SQLite Datenbank
+	 */
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		try {

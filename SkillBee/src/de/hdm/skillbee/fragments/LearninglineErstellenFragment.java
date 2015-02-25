@@ -39,6 +39,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+/**
+ * 
+ * @author Moser, Roth, Sonntag, Zanella, Zimmermann
+ *
+ */
 
 public class LearninglineErstellenFragment extends Fragment implements OnClickListener {
 

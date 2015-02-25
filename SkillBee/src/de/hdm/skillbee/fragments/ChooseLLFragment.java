@@ -30,6 +30,11 @@ import de.hdm.skillbee.controller.ControllerDBLokal;
 import de.hdm.skillbee.controller.ControllerDBServer;
 import de.hdm.skillbee.db.server.JSONParser;
 
+/**
+ * Fragmentklasse, die für die Funktionen hinter der Learning Line Auswahl im Store steht
+ * @author Moser, Roth, Sonntag, Zanella, Zimmermann
+ *
+ */
  
 public class ChooseLLFragment extends Fragment implements OnItemClickListener {
 
@@ -50,11 +55,22 @@ public class ChooseLLFragment extends Fragment implements OnItemClickListener {
 	
 	ListView lv = null;
 	
-    
+	 /**
+     * Verweis zur Hauptaktivität setzen
+     * @param baseActivity
+     */
     public void setBaseActivity(Activity baseActivity) {
 		this.baseActivity = baseActivity;
 	}
 
+    /**
+     * Methode wird aufgerufen sobald die Ansicht erzeugt werden soll, die dann hier auch zurückgegeben wird
+     * Hier wird die Ansicht aufgebaut
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     	
    	 View view = inflater.inflate(R.layout.fragment_store_load, container, false);
@@ -64,9 +80,15 @@ public class ChooseLLFragment extends Fragment implements OnItemClickListener {
        return view;
    }
 
+    /**
+     * Hier wird eine Fallunterscheidung getroffen
+     * Abhängig von state wird entweder die Methode buildUploadList oder buildDownloadList aufgerufen
+     */
     public void doSomething() {
         
+    	//Verweis zur lokalen Datenbank
     	cdbl = ControllerDBLokal.get();
+    	//Verweis zur externen Online Datenbank
     	cdbs = ControllerDBServer.get();
         
         if (state) {
@@ -78,6 +100,14 @@ public class ChooseLLFragment extends Fragment implements OnItemClickListener {
 
     }
 
+    /**
+	 * ClickListener Event Handler
+	 * Wird ausgeführt sobald kurz auf ein Listenelement geklickt wird 
+	 * @param parent
+	 * @param view
+	 * @param position
+	 * @param id
+	 */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
     	
@@ -92,28 +122,46 @@ public class ChooseLLFragment extends Fragment implements OnItemClickListener {
 
     }
     
+    /**
+     * Setzt state auf false
+     */
     public void setDownload() {
     	state = false;
 
     }
 
+    /**
+     * Setzt state auf true
+     */
     public void setUpload() {
     	state = true;
 
     }
     
+    /**
+     * Speichert die ausgewählte Line in die lokale DB
+     */
     public void saveSelected2LocalDB() {
     	new DownloadSelectedLL().execute();
     }
     
+    /**
+     * Speichert die ausgewählte Line in die online DB
+     */
     public void saveSelected2OnlineDB() {
     	new UploadLL().execute();
     }
     
+    /**
+     * Baut Liste aller Lines auf, die heruntergeladen werden können
+     */
     public void buildDownloadList() {
     	new  DownloadLLs().execute();
     }
     
+    /**
+     * Baut Liste aller Lines auf, die hochgeladen werden können
+     */
     public void buildUploadList() {
     	llVector = cdbl.getLearninglineMapper().findAll();
     	setRows();

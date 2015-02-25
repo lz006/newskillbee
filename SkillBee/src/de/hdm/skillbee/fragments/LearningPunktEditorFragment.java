@@ -22,6 +22,13 @@ import de.hdm.skillbee.bo.Knoten;
 import de.hdm.skillbee.bo.Learningline;
 import de.hdm.skillbee.controller.ControllerDBLokal;
 
+
+/**
+ * 
+ * @author Moser, Roth, Sonntag, Zanella, Zimmermann
+ *
+ */
+
 public class LearningPunktEditorFragment extends ListFragment implements OnItemClickListener {
 
 	String[] menutitles;

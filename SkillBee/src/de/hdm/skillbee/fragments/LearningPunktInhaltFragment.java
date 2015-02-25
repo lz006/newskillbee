@@ -35,6 +35,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * 
+ * @author Moser, Roth, Sonntag, Zanella, Zimmermann
+ *
+ */
+
 public class LearningPunktInhaltFragment extends Fragment implements OnClickListener{
 	
 	

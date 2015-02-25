@@ -26,6 +26,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
+/**
+ * Fragmentklasse, die für die Funktionen des Loginvorgangs des Users zuständig ist
+ * @author Moser, Roth, Sonntag, Zanella, Zimmermann
+ *
+ */
+
 public class UserLoginFragment extends Fragment implements OnClickListener {
 
 	Activity baseActivity = null;
@@ -47,25 +54,33 @@ public class UserLoginFragment extends Fragment implements OnClickListener {
 	String userMsg = null;
 	
 	
-	
+	  /**
+     * Verweis zur Hauptaktivität setzen
+     * @param baseActivity
+     */
 	public void setBaseActivity(Activity baseActivity) {
 		this.baseActivity = baseActivity;
 	}
 
-
+	   /**
+     * Methode wird aufgerufen sobald die Ansicht erzeugt werden soll, die dann hier auch zurückgegeben wird
+     * Hier wird die Ansicht aufgebaut
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-	      /**
-	       * Inflate the layout for this fragment
-	       */
+	     
+		//Verweis zur lokalen Datenbank 
 		cdbl = ControllerDBLokal.get();
+		//Verweis zur externen Online Datenbank
     	cdbs = ControllerDBServer.get();
-		
-    	
-    	//email =user.getEmail();
 		
 		View v = inflater.inflate(R.layout.user_login_fragment, container, false);
 		Button btnlogin = (Button) v.findViewById(R.id.btnloginuser);
+		//Clicklistener Event zum Button für Klicks hinzufügen
 		btnlogin.setOnClickListener(this);
 		 emailadress = (EditText)v.findViewById(R.id.textboxLogEmail);
 		 password =(EditText)v.findViewById(R.id.textboxLogPW);
@@ -73,12 +88,15 @@ public class UserLoginFragment extends Fragment implements OnClickListener {
 		return v;
 	}
 	
-	
+	/**
+	 * Wird ausgeführt sobald der Button angeklickt wird
+	 * @param v
+	 */
 	@Override
     public void onClick(View v) {
         switch (v.getId()) {
 	        case R.id.btnloginuser:
-	        	//Create User temporarily               	
+	        	//Erzeuge User temporär              	
 		        user = new User();
 		        user.setEmail(emailadress.getText().toString());
 		        user.setPasswort(password.getText().toString());
@@ -91,24 +109,31 @@ public class UserLoginFragment extends Fragment implements OnClickListener {
         }
     }
 	
+	/**
+	 * Isolierte Klasse, die für den Loginvorgang des Users verantwortlich ist. Hierbei werden die vom User
+	 * angegebenen Daten an das PHP Skript auf dem Server geschickt, welches wiederum als Service dient und 
+	 * diese Daten in die Online Datenbank schreibt. Dies muss asynchron geschehen, da sonst der gesamte
+	 * clientseitige Applikationsablauf einfrieren würde bis der Loginvorgang abgeschlossen wäre. Daher erbt 
+	 * Klasse auch von der abstrakten Klasse AsyncTask  
+	 */
 	private class loginUser extends AsyncTask<Void, Void, Void> {
 
 		@Override
 		protected Void doInBackground(Void... params) {
-			// Building Parameters
+			// Bilde Parameter
 			List<NameValuePair> params1 = new ArrayList<NameValuePair>();
 			
 			// SQL-Query wird erzeugt
 			params1.add(new BasicNameValuePair("query", UserLoginFragment.this.cdbs.getUserMapper().findByUserAndPW(user)));
 			
-			// 1 -> Response with objects expected (If user is registered already)
+			// 1 -> Antwort mit Objekten erwartet (Wenn der User bereits registriert ist)
 			params1.add(new BasicNameValuePair("flag", "1"));
 			
 			// SQL-Query wird mittels Request an den Server übertragen
 			JSONObject json = jsonParser.makeHttpRequest(cdbs.getUrl_user_queries(), "POST", params1);
 			
 			try {
-				// Checking for SUCCESS TAG
+				// Überprüfe auf SUCCESS TAG
 				int success = json.getInt("success");
 
 				if (success != 1) {
@@ -128,16 +153,26 @@ public class UserLoginFragment extends Fragment implements OnClickListener {
 			
 			return null;
 		}
+		/**
+		 * Wird aufgerufen sobald der Loginprozess abgeschlossen ist
+		 * @param result
+		 */
 		protected void onPostExecute(Void result) {
 			
+			//Meldung wird angezeigt
 			Toast einToast = Toast.makeText(UserLoginFragment.this.baseActivity.getApplicationContext(), userMsg, Toast.LENGTH_LONG);
 			einToast.show();
 			
+			//Wenn der Login erfolgreich war tausche das Fragment mit dem MainMenuFragment aus
 			if(loginsuccess)
 			{
+		    //Initialisiere Fragmentaustausch
 			FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+			//Instanziiere MainMenuFragment
 			MainMenuFragment mf = new MainMenuFragment();
-        	mf.setBaseActivity(baseActivity);
+			//Übergebe die ausgewählte Learningline an eine Methode im MainMenuFragment
+			mf.setBaseActivity(baseActivity);
+			 //Ersetze Fragment
         	fragmentTransaction.replace(R.id.fragmentcontainer, mf);
         	fragmentTransaction.addToBackStack(null);
          	fragmentTransaction.commit();

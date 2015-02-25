@@ -25,6 +25,12 @@ import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.Toast;
 
+/**
+ * 
+ * @author Moser, Roth, Sonntag, Zanella, Zimmermann
+ *
+ */
+
 public class LearningLineFragment extends Fragment {
 
 	Activity baseActivity = null;

@@ -16,13 +16,21 @@ import de.hdm.skillbee.bo.Learningline;
  */
 public class LearninglineMapper {
 	
+	/**
+	 * Konstruktor
+	 * @param dbConLocal
+	 */
 	private DBConnection dbConLocal = null;
 	
 	public LearninglineMapper(DBConnection dbConLocal) {
 		this.dbConLocal = dbConLocal;
 	}
 
-	
+	/**
+	 * Gibt eine oder mehrere Learninglines anhand eines oder mehrerer Id Schlüssel zurück
+	 * @param keys
+	 * @return
+	 */
 	public Vector<Learningline> findByKeys(Vector<Integer> keys) {
 		StringBuffer ids = new StringBuffer();
 		
@@ -66,6 +74,12 @@ public class LearninglineMapper {
 	
 	}
 	
+	/**
+	 * Gibt eine Learningline anhand eines zusammengesetzten Schlüssels aus lokaler und Online Id zurück
+	 * @param idloc
+	 * @param idon
+	 * @return
+	 */
 	public Learningline findByCompositeKey(int idloc, int idon) {
 		Cursor c = dbConLocal.readQuery("SELECT * FROM Learningline WHERE idLoc="+idloc+" AND idOn="+idon,null);
 		
@@ -92,6 +106,10 @@ public class LearninglineMapper {
 		}
 	}
 
+	/**
+	 * Gibt alle Learninglines zurück
+	 * @return
+	 */
 	public Vector<Learningline> findAll() {
 		Vector<Learningline> lls = new Vector<Learningline>();
 		
@@ -141,6 +159,11 @@ public class LearninglineMapper {
 		return ll;
 	}
 	
+	/**
+	 * Fügt eine bestimmte Learningline in die lokale SQLite Datenbank ein
+	 * @param ll
+	 * @return
+	 */
 	public Learningline insert(Learningline ll) {
 		int status = 0;
 		if (ll.isStatus()) {
@@ -191,10 +214,10 @@ public class LearninglineMapper {
 	}
 
 	/**
-	 * Nachdem eine LearningLine verï¿½ffentlicht wurde muss diese
+	 * Nachdem eine LearningLine veroeffentlicht wurde muss diese
 	 * mit dieser Methode in der lokalen DB wieder aktualisiert werden,
-	 * damit auch der Online-DB-Primï¿½schlï¿½ssel der verï¿½ffentlichten Entitï¿½t 
-	 * hinzugefï¿½gt wird.
+	 * damit auch der Online-DB-Primaerschluessel der veroeffentlichten Entitaet 
+	 * hinzugefuegt wird.
 	 * @param ll
 	 * @return
 	 */
@@ -207,7 +230,11 @@ public class LearninglineMapper {
 				
 		return ll;
 	}
-	
+	/**
+	 * Verändert und aktualisiert eine bestimmte Learningline aus der lokalen SQLite Datenbank
+	 * @param ll
+	 * @return
+	 */
 	public Learningline update(Learningline ll) {
 		int status = 0;
 		if (ll.isStatus()) {
@@ -218,6 +245,10 @@ public class LearninglineMapper {
 		return ll;
 	}
 
+	/**
+	 * Löscht eine bestimmte Learningline aus der lokalen SQLite Datenbank
+	 * @param ll
+	 */
 	public void delete(Learningline ll) {
 		dbConLocal.writeQuery("DELETE FROM Learningline WHERE idLoc="+ll.getId()+" AND idOn="+ll.getIdOn()+";");
 		

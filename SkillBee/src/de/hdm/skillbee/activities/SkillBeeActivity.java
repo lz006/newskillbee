@@ -44,28 +44,39 @@ import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+/**
+ * Klasse, die für die Hauptaktivität der Skill Bee App verantwortlich ist
+ * @author Moser, Roth, Sonntag, Zanella, Zimmermann
+ *
+ */
 
 public class SkillBeeActivity extends Activity {
 	
+	// Deklarierung der Membervariablen
 	JSONParser jsonParser = new JSONParser();
-	
 	ControllerDBLokal cdbl = null;
 	ControllerDBServer cdbs = null;
-	
 	Kategorie kat = null;
 
+	/*
+	 * Standard Create Methode
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_skillbee);
 	
+	    //ControllerDBLokal wird instanziiert um auf Hilfsmethoden zugreifen zu können
 	    ControllerDBLokal con = ControllerDBLokal.get();
+	    //Verbindung zu lokaler Datenbank wird aufgebaut
 	    con.connect2DB(this, "database");
 	    
 	    if(savedInstanceState==null) {
 	    	FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                
+             //Wenn noch kein User vorhanden ist, rufe das Login oder Register Fragment auf   
 	        if(con.getUserMapper().findAll()==null) {
 	    	   //Display UserRegistrationFragment
 	        	UserLogOrRegFragment lrf = new UserLogOrRegFragment();
@@ -90,12 +101,15 @@ public class SkillBeeActivity extends Activity {
         cdbl.connect2DB(this, "database");
     }
 
-
+/**
+ * Ist für die Erzeugung des Actionbar Menüs zuständig
+ * @param menu
+ * @return
+ */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        // Füllt das Menü und fügt Menüelemente hinzu
         getMenuInflater().inflate(R.menu.skill_bee, menu);
-    //    getMenuInflater().inflate(R.menu.skillbee2, menu);
         return true;
     }
 
@@ -114,25 +128,31 @@ public class SkillBeeActivity extends Activity {
 //    }
      
     
+    /**
+     * Definition der Auswahlmöglichkeiten im Actionbar Navigationsmenü
+     * @param item
+     * @return
+     */
     @Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    // Handle presses on the action bar items
+	    // Reagiert auf das Drücken von Actionbar Elementen
 
     	FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
     	switch (item.getItemId()) {
 	        
-	    
+	    	// das Navigationsmenü wird aufgerufen
 	    	case R.id.action_settings:
-	        	
+	        //das Learning Line Übersicht Fragment wird aufgerufen 	
 	        case R.id.submenu1:
 	        	LearningLineOverviewFragment llof= new LearningLineOverviewFragment();
 	        	llof.setBaseActivity(this);
 	        	fragmentTransaction.replace(R.id.fragmentcontainer, llof);
 	        	fragmentTransaction.addToBackStack(null);
 	         	fragmentTransaction.commit();
-	        	
-	        	
+	
 	        	return true;
+	        	
+	        //das Learning Line Editor Fragment wird aufgerufen
 	        case R.id.submenu2:
 	        	
 	        	LpgotoQuestionFragment lqf= new LpgotoQuestionFragment();
@@ -143,7 +163,7 @@ public class SkillBeeActivity extends Activity {
 	        	
 	        	return true;
 	        
-    
+	        //das Learning Line Store Fragment wird aufgerufen
 	        case R.id.submenu3:
 	        	
 	        	StoreFragment sf= new StoreFragment();
@@ -157,15 +177,6 @@ public class SkillBeeActivity extends Activity {
     	}
 
     
-//    public void replaceFragment(Fragment fragment)
-//    {
-//    	
-//       FragmentManager fragmentManager = getFragmentManager();
-//       FragmentTransaction fragmentTransaction = 
-//    		      fragmentManager.beginTransaction();
-//    	fragmentTransaction.replace(android.R.id.content, fragment);
-//     	fragmentTransaction.commit();
-//        
-//    }
+
     }       }      
 

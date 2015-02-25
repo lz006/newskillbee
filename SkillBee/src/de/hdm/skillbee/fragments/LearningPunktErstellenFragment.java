@@ -34,6 +34,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * 
+ * @author Moser, Roth, Sonntag, Zanella, Zimmermann
+ *
+ */
+
 public class LearningPunktErstellenFragment extends Fragment implements OnClickListener{
 
 	Activity baseActivity = null;

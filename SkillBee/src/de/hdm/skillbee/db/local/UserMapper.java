@@ -17,13 +17,21 @@ import android.database.Cursor;
  */
 public class UserMapper {
 	
+	/**
+	 * Konstruktor
+	 * @param dbConLocal
+	 */
 	private DBConnection dbConLocal = null;
 	
 	public UserMapper(DBConnection dbConLocal) {
 		this.dbConLocal = dbConLocal;
 	}
 
-	
+	/**
+	 * Gibt einen oder mehrere User anhand eines oder mehreren Id Schlüssel zurück
+	 * @param keys
+	 * @return
+	 */
 	public Vector<User> findByKeys(Vector<Integer> keys) {
 		StringBuffer ids = new StringBuffer();
 		
@@ -59,6 +67,10 @@ public class UserMapper {
 	
 	}
 
+	/**
+	 * Gibt alle User zurück
+	 * @return
+	 */
 	public Vector<User> findAll() {
 		Vector<User> users = new Vector<User>();
 		
@@ -95,6 +107,11 @@ public class UserMapper {
 		return user;
 	}
 	
+	/**
+	 * Verändert und aktualisiert einen bestimmten User aus der lokalen SQLite Datenbank
+	 * @param user
+	 * @return
+	 */
 	public User update(User user) {
 		
 		dbConLocal.writeQuery("UPDATE User SET id="+user.getId()+", vorname='"+user.getVorname()+"', name='"+user.getName()+"', email='"+user.getEmail()+"', passwort='"+user.getPasswort()+"' WHERE id="+user.getId()+";");
@@ -102,6 +119,10 @@ public class UserMapper {
 		return user;
 	}
 
+	/**
+	 * Löscht einen bestimmten User aus der lokalen SQLite Datenbank
+	 * @param user
+	 */
 	public void delete(User user) {
 		dbConLocal.writeQuery("DELETE FROM User WHERE id="+user.getId()+";");
 		

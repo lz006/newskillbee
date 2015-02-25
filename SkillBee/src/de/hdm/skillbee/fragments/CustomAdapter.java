@@ -14,35 +14,66 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * Adapterklasse, die für die Darstellung einer Liste bestehend aus verschiedenen Elementen zuständig ist
+ * @author Moser, Roth, Sonntag, Zanella, Zimmermann
+ *
+ */
+
 public class CustomAdapter extends BaseAdapter {
 
 	Context context;
     List<RowItem> rowItem;
-
-    CustomAdapter(Context context, List<RowItem> rowItem) {
+    
+    
+    /**
+     * Konstruktor
+     * @param context
+     * @param rowItem
+     */
+   public CustomAdapter(Context context, List<RowItem> rowItem) {
         this.context = context;
         this.rowItem = rowItem;
-
     }
 
+   
+   /**
+    * Anzahl der Listenelemente auslesen
+    * @return
+    */
     @Override
     public int getCount() {
 
         return rowItem.size();
     }
 
+    /**
+     * Listenelement anhand der Elementposition auslesen
+     * @param position
+     * @return
+     */
     @Override
     public Object getItem(int position) {
 
         return rowItem.get(position);
     }
 
+    /**
+     * Elementid anhand der Elementposition auslesen
+     * @param position
+     * @return
+     */
     @Override
     public long getItemId(int position) {
 
         return rowItem.indexOf(getItem(position));
     }
 
+    /**
+     * Sicht anhand der Elementposition, der aktuellen Sicht und der ViewGroup auslesen
+     * @param position, convertView, parent
+     * @return
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 

@@ -17,11 +17,19 @@ public class KnotenMapper {
 	
 	private DBConnection dbConLocal = null;
 	
+	/**
+	 * Konstruktor
+	 * @param dbConLocal
+	 */
 	public KnotenMapper(DBConnection dbConLocal) {
 		this.dbConLocal = dbConLocal;
 	}
 
-	
+	/**
+	 * Gibt eine oder mehrere Knoten anhand eines oder mehrerer Id Schlüssel zurück
+	 * @param keys
+	 * @return
+	 */
 	public Vector<Knoten> findByKeys(Vector<Integer> keys) {
 		StringBuffer ids = new StringBuffer();
 		
@@ -70,6 +78,10 @@ public class KnotenMapper {
 	
 	}
 
+	/**
+	 * Gibt alle Knoten zurück
+	 * @return
+	 */
 	public Vector<Knoten> findAll() {			
 		Vector<Knoten> knoten = new Vector<Knoten>();
 		
@@ -105,6 +117,11 @@ public class KnotenMapper {
 		return knoten;
 	}
 
+	/**
+	 * Fügt einen bestimmten Knoten in die lokale SQLite Datenbank ein
+	 * @param kn
+	 * @return
+	 */
 	public Knoten insert(Knoten kn) {
 		int status = 0;
 		if (kn.isStatus()) {
@@ -143,11 +160,21 @@ public class KnotenMapper {
 		return kn;
 	}
 	
+	
+	 /**
+	  *  Fügt eine bestimmte Learningline von der Online Datenbank in die lokale SQLite Datenbank ein
+	  * @param ll
+	  */
 	public void updateAfterRelease(Learningline ll) {
 		dbConLocal.writeQuery("UPDATE Knoten SET llIDOn="+ll.getIdOn()+"  WHERE llIDLoc="+ll.getId()+" AND llIDOn="+0+";");
 		
 	}
 	
+	/**
+	 * Gibt alle Knoten einer bestimmten Learningline zurück
+	 * @param ll
+	 * @return
+	 */
 	public Vector<Knoten> findByLL(Learningline ll) {
 
         
@@ -218,7 +245,11 @@ public class KnotenMapper {
 
   }
 	
-
+/**
+ * Verändert und aktualisiert einen bestimmten Knoten in der lokalen SQLite Datenbank
+ * @param kn
+ * @return
+ */
 	public Knoten update(Knoten kn) {
 		int status = 0;
 		if (kn.isStatus()) {
@@ -229,11 +260,19 @@ public class KnotenMapper {
 		return kn;
 	}
 
+	/**
+	 * Löscht einen bestimmten Knoten aus der lokalen SQLite 
+	 * @param kn
+	 */
 	public void delete(Knoten kn) {
 		dbConLocal.writeQuery("DELETE FROM Knoten WHERE id="+kn.getId()+" AND llIDLoc="+kn.getLlIDLoc()+" AND llIDOn="+kn.getLlIDOn()+";");
 		
 	}
 	
+	/**
+	 * Löscht alle Knoten einer bestimmten Learningline
+	 * @param ll
+	 */
 	public void deleteByLL(Learningline ll) {
 		dbConLocal.writeQuery("DELETE FROM Knoten WHERE llIDLoc="+ll.getId()+" AND llIDOn="+ll.getIdOn()+";");
 		

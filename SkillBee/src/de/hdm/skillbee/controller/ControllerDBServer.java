@@ -1,5 +1,11 @@
 package de.hdm.skillbee.controller;
 
+/**
+ * 
+ * @author Moser, Roth, Sonntag, Zanella, Zimmermann
+ *
+ */
+
 import android.content.Context;
 import de.hdm.skillbee.db.server.*;
 
@@ -39,6 +45,10 @@ public class ControllerDBServer {
 		
 	}
 	
+	/**
+	 * Gibt einen Verweis auf die ControllerDBServer Instanz zurück, solange es diesen Verweis noch nicht gibt
+	 * @return
+	 */
 	public static ControllerDBServer get() {
 		if (con == null) {
 			con = new ControllerDBServer();
@@ -46,6 +56,10 @@ public class ControllerDBServer {
 		return con;
 	}
 	
+	/**
+	 * Ein Verweis auf die KategorieMapper Instanz wird zurückgegeben
+	 * @return
+	 */
 	public KategorieMapper getKategorieMapper() {
 		if (kategorieMapper == null) {
 			kategorieMapper = new KategorieMapper();
@@ -53,6 +67,10 @@ public class ControllerDBServer {
 		return kategorieMapper;
 	}
 
+	/**
+	 * Ein Verweis auf die KnotenMapper Instanz wird zurückgegeben
+	 * @return
+	 */
 	public KnotenMapper getKnotenMapper() {
 		if (knotenMapper == null) {
 			knotenMapper = new KnotenMapper();
@@ -60,6 +78,10 @@ public class ControllerDBServer {
 		return knotenMapper;
 	}
 
+	/**
+	 * Ein Verweis auf die LearninglineMapper Instanz wird zurückgegeben
+	 * @return
+	 */
 	public LearninglineMapper getLearninglineMapper() {
 		if (learninglineMapper == null) {
 			learninglineMapper = new LearninglineMapper();
@@ -67,6 +89,10 @@ public class ControllerDBServer {
 		return learninglineMapper;
 	}
 
+	/**
+	 * Ein Verweis auf die UserMapper Instanz wird zurückgegeben
+	 * @return
+	 */
 	public UserMapper getUserMapper() {
 		if (userMapper == null) {
 			userMapper = new UserMapper();

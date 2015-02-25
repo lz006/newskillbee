@@ -18,6 +18,11 @@ import android.widget.ListView;
 import android.widget.Toast;
 import de.hdm.skillbee.R;
 
+/**
+ * 
+ * @author Moser, Roth, Sonntag, Zanella, Zimmermann
+ *
+ */
  
 public class StoreFragment extends Fragment implements OnItemClickListener {
 

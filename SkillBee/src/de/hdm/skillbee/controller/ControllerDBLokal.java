@@ -1,5 +1,11 @@
 package de.hdm.skillbee.controller;
 
+/**
+ * 
+ * @author Moser, Roth, Sonntag, Zanella, Zimmermann
+ *
+ */
+
 import android.content.Context;
 import de.hdm.skillbee.db.local.*;
 
@@ -25,11 +31,17 @@ public class ControllerDBLokal {
 	
 	private UserMapper userMapper = null;
 	
-	
+	/**
+	 * Nach außen hin nicht sichtbarer Konstruktor
+	 */
 	private ControllerDBLokal() {
 		
 	}
 	
+	/**
+	 * Gibt einen Verweis auf die ControllerDBLokal Instanz zurück, solange es diesen Verweis noch nicht gibt
+	 * @return
+	 */
 	public static ControllerDBLokal get() {
 		if (con == null) {
 			con = new ControllerDBLokal();
@@ -48,6 +60,10 @@ public class ControllerDBLokal {
 		}
 	}
 
+	/**
+	 * Ein Verweis auf die KategorieMapper Instanz wird zurückgegeben
+	 * @return
+	 */
 	public KategorieMapper getKategorieMapper() {
 		if (kategorieMapper == null) {
 			kategorieMapper = new KategorieMapper(dbConLocal);
@@ -55,6 +71,10 @@ public class ControllerDBLokal {
 		return kategorieMapper;
 	}
 
+	/**
+	 * Ein Verweis auf die KnotenMapper Instanz wird zurückgegeben
+	 * @return
+	 */
 	public KnotenMapper getKnotenMapper() {
 		if (knotenMapper == null) {
 			knotenMapper = new KnotenMapper(dbConLocal);
@@ -62,6 +82,10 @@ public class ControllerDBLokal {
 		return knotenMapper;
 	}
 
+	/**
+	 * Ein Verweis auf die LearninglineMapper Instanz wird zurückgegeben
+	 * @return
+	 */
 	public LearninglineMapper getLearninglineMapper() {
 		if (learninglineMapper == null) {
 			learninglineMapper = new LearninglineMapper(dbConLocal);
@@ -69,6 +93,10 @@ public class ControllerDBLokal {
 		return learninglineMapper;
 	}
 
+	/**
+	 * Ein Verweis auf die UserMapper Instanz wird zurückgegeben
+	 * @return
+	 */
 	public UserMapper getUserMapper() {
 		if (userMapper == null) {
 			userMapper = new UserMapper(dbConLocal);

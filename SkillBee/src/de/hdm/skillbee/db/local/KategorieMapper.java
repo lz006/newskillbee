@@ -17,11 +17,19 @@ public class KategorieMapper {
 	
 	private DBConnection dbConLocal = null;
 	
+	/**
+	 * Konstruktor
+	 * @param dbConLocal
+	 */
 	public KategorieMapper(DBConnection dbConLocal) {
 		this.dbConLocal = dbConLocal;
 	}
 
-	
+	/**
+	 * Gibt eine oder mehrere Kategorien anhand eines oder mehrerer Id Schlüssel zurück
+	 * @param keys
+	 * @return
+	 */
 	public Vector<Kategorie> findByKeys(Vector<Integer> keys) {
 		StringBuffer ids = new StringBuffer();
 		
@@ -54,6 +62,10 @@ public class KategorieMapper {
 	
 	}
 
+	/**
+	 * Gibt alle Kategorien zurück
+	 * @return
+	 */
 	public Vector<Kategorie> findAll() {
 		Vector<Kategorie> kategorien = new Vector<Kategorie>();
 		
@@ -74,18 +86,32 @@ public class KategorieMapper {
 		return kategorien;
 	}
 
+	/**
+	 * Fügt eine Kategorie von der Online Datenbank in die lokale SQLite Datenbank ein
+	 * @param kat
+	 * @return
+	 */
 	public Kategorie insertFromOnlineDB(Kategorie kat) {
 		dbConLocal.writeQuery("INSERT INTO Kategorie (`id`,`bezeichnung`) VALUES ("+kat.getId()+", '"+ kat.getBezeichnung() +"');");
 				
 		return kat;
 	}
 
+	/**
+	 * Verändert und aktualisiert eine bestimmte Kategorie in der lokalen SQLite Datenbank
+	 * @param kat
+	 * @return
+	 */
 	public Kategorie update(Kategorie kat) {
 		dbConLocal.writeQuery("UPDATE Kategorie SET bezeichnung='"+kat.getBezeichnung()+"' WHERE id="+kat.getId()+";");
 				
 		return kat;
 	}
 
+	/**
+	 * Löscht eine bestimmte Kategorie aus der lokalen SQLite Datenbank
+	 * @param kat
+	 */
 	public void delete(Kategorie kat) {
 		dbConLocal.writeQuery("DELETE FROM Kategorie WHERE id="+kat.getId()+";");
 		

@@ -15,7 +15,15 @@ import de.hdm.skillbee.bo.Learningline;
  *
  */
 public class LearninglineMapper {
-		
+	
+	
+	/**
+	 * Gibt ein SELECT Statement anhand eines oder mehreren Id Schlüssel als Zeichenkette zurück
+	 * Dieses Statement ist dafür verantwortlich, ein oder mehrere Kategorien aus der Online Datenbank anhand eines 
+	 * oder mehrerer Id Schlüssel zurückzugeben 
+	 * @param keys
+	 * @return
+	 */
 	public String findByKeysQuery(Vector<Integer> keys) {
 		StringBuffer ids = new StringBuffer();
 		
@@ -32,10 +40,21 @@ public class LearninglineMapper {
 	
 	}
 
+	/**
+	 * Gibt ein SELECT Statement als Zeichenkette zurück
+	 * Dieses Statement ist dafür verantwortlich alle Learninglines aus der Online Datenbank zurückzugeben 
+	 * @return
+	 */
 	public String findAllQuery() {
 		return new String("SELECT * FROM LearningLine");
 	}
 	
+	/**
+	 * Gibt ein INSERT INTO Statement als Zeichenkette zurück
+	 * Dieses Statement ist dafür verantwortlich eine bestimmte Learningline in die Online Datenbank hinzuzufügen
+	 * @param ll
+	 * @return
+	 */
 	public String insertQuery(Learningline ll) {
 		int status = 0;
 		if (ll.isStatus()) {
@@ -44,6 +63,12 @@ public class LearninglineMapper {
 		return new String("INSERT INTO LearningLine (`idLoc`, `status`, `fortschritt`, `authorID`,`kategorieID`,`bezeichnung`) VALUES ("+ll.getId()+", "+status+", "+ll.getFortschritt()+", "+ll.getAuthorID()+", "+ll.getKategorieID()+", '"+ ll.getBezeichnung() +"');");
 	}
 	
+	/**
+	 * Gibt ein UPDATE Statement als Zeichenkette zurück
+	 * Dieses Statement ist dafür verantwortlich eine bestimmte Learningline in der Online Datenbank zu verändern und zu aktualisieren
+	 * @param ll
+	 * @return
+	 */
 	public String updateQuery(Learningline ll) {
 		int status = 0;
 		if (ll.isStatus()) {
@@ -52,18 +77,41 @@ public class LearninglineMapper {
 		return new String("UPDATE LearningLine SET status="+status+", fortschritt='"+ll.getFortschritt()+"', authorID="+ll.getAuthorID()+", kategorieID="+ll.getKategorieID()+", bezeichnung='"+ll.getBezeichnung()+"' WHERE idLoc="+ll.getId()+" AND idOn="+ll.getIdOn()+";");
 	}
 
+	/**
+	 * Gibt ein DELETE Statement als Zeichenkette zurück
+	 * Dieses Statement ist dafür verantwortlich eine bestimmte Learningline in der Online Datenbank zu löschen
+	 * @param ll
+	 * @return
+	 */
 	public String deleteQuery(Learningline ll) {
 		return new String("DELETE FROM LearningLine WHERE idLoc="+ll.getId()+" AND idOn="+ll.getIdOn()+";");
 	}
 	
+	/**
+	 * Gibt ein SELECT Statement als Zeichenkette zurück
+	 * Dieses Statement ist dafür verantwortlich die höchste existierende Id einer Kategorie zurückzugeben
+	 * @return
+	 */
 	public String getMaxKategorieIDQuery() {
 		return new String("SELECT MAX(idOn) AS maxid FROM LearningLine;");	
 	}
 	
+	
+	/**
+	 * Gibt ein SELECT Statement als Zeichenkette zurück
+	 * Dieses Statement ist dafür verantwortlich die höchste existierende Online Id einer Learningline zurückzugeben
+	 * @return
+	 */
 	public String llIDQuery(Learningline ll) {
 		return new String("SELECT MAX(idOn) AS maxid FROM LearningLine WHERE authorID="+ll.getAuthorID()+";");
 	}
 	
+	
+	/**
+	 * Gibt eine oder mehrere Learninglines anhand eines JSON Objektes zurück
+	 * @param json
+	 * @return
+	 */
 	public Vector<Learningline> json2Learningline(JSONObject json) {
 		Vector<Learningline> lls = new Vector<Learningline>();
 		
@@ -96,6 +144,11 @@ public class LearninglineMapper {
 		return lls;
 	}
 	
+	/**
+	 * Gibt die höchste ID anhand eines JSON Objektes zurück
+	 * @param json
+	 * @return
+	 */
 	public int json2NewID(JSONObject json) {
 		
 		Integer newID = null;
