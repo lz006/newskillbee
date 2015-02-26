@@ -37,6 +37,7 @@ import android.widget.Toast;
 
 /**
  * 
+ * Fragmentklasse, die für das Anzeigen des Webviews für Youtube Medien zuständig ist
  * @author Moser, Roth, Sonntag, Zanella, Zimmermann
  *
  */
@@ -50,18 +51,30 @@ public class MedienYFragment extends Fragment implements OnClickListener{
 	
 	Knoten kn = null;
 
+	
+	   /**
+     * Methode wird aufgerufen sobald die Ansicht erzeugt werden soll, die dann hier auch zurückgegeben wird
+     * Hier wird die Ansicht aufgebaut
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
+	
+	
+
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-	      /**
-	       * Inflate the layout for this fragment
-	       */
+	     
+		
+		
+		//Verweis zur lokalen Datenbank 
 		cdbl = ControllerDBLokal.get();
+		//Verweis zur externen Online Datenbank
 		cdbs = ControllerDBServer.get();
 		
-		
+		//View der das Layout ladet
 		View v = inflater.inflate(R.layout.medien_fragment, container, false);
-		
-		
-		
+
 		webView = (WebView) v.findViewById(R.id.webView1);
         webView.getSettings().setJavaScriptEnabled(true); // Wichtig, damit jQuery funktioniert. 
         webView.getSettings().setDomStorageEnabled(true);
@@ -71,20 +84,32 @@ public class MedienYFragment extends Fragment implements OnClickListener{
 		
 		
 		
-		
-		
-		
 		return v;
 		
 		
-    
-
-	
-	
-	 
-		
 		
 }
+
+	
+	/**
+     * Knotenindex setzen von vorhergelagertem Fragment
+     * @param kn
+     */
+	
+		public void setKnoten(Knoten kn) {
+			
+			this.kn = kn;
+			
+			
+		}
+		
+				
+	
+		/**
+		 * Wird ausgeführt sobald etwas angeklickt wird
+		 * @param v
+		 */
+		
 
 	@Override
 	public void onClick(View v) {
@@ -94,19 +119,12 @@ public class MedienYFragment extends Fragment implements OnClickListener{
 		
 	}
 	
-public void setKnoten(Knoten kn) {
-		
-		this.kn = kn;
-		
-		
-	}
+
 	
-			
-		
-		
-	
-	
-	
+/**
+ * Verweis zur Hauptaktivität setzen
+ * @param baseActivity
+ */
 
 	public void setBaseActivity(Activity baseActivity) {
 		// TODO Auto-generated method stub

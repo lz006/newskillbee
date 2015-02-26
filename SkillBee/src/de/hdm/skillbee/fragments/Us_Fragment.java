@@ -37,32 +37,44 @@ import android.widget.Toast;
 
 /**
  * 
+ * Fragmentklasse, die für das Anzeigen Über uns zuständig ist
  * @author Moser, Roth, Sonntag, Zanella, Zimmermann
  *
  */
+
 
 public class Us_Fragment extends Fragment implements OnClickListener{
 	
 	
 	
 	Knoten kn = null;
+	
+	
+	   /**
+     * Methode wird aufgerufen sobald die Ansicht erzeugt werden soll, die dann hier auch zurückgegeben wird
+     * Hier wird die Ansicht aufgebaut
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
+	
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-	      /**
-	       * Inflate the layout for this fragment
-	       */
-		
-		
-		
+	      
+		//View der das Layout ladet
 		View v = inflater.inflate(R.layout.about_us_fragment, container, false);
-		
-	
-		
 		
 		return v;
 		
 }
 
+	
+	/**
+	 * Wird ausgeführt sobald etwas angeklickt wird
+	 * @param v
+	 */
+	
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
@@ -72,11 +84,12 @@ public class Us_Fragment extends Fragment implements OnClickListener{
 	}
 	
 
-			
-		
 		
 	
-	
+	  /**
+     * Verweis zur Hauptaktivität setzen
+     * @param baseActivity
+     */
 	
 
 	public void setBaseActivity(Activity baseActivity) {

@@ -20,10 +20,14 @@ import de.hdm.skillbee.R;
 
 /**
  * 
+ * Fragmentklasse, die für das Anzeigen des Stores zuständig ist
  * @author Moser, Roth, Sonntag, Zanella, Zimmermann
  *
  */
  
+
+
+
 public class StoreFragment extends Fragment implements OnItemClickListener {
 
     String[] menutitles;
@@ -35,19 +39,54 @@ public class StoreFragment extends Fragment implements OnItemClickListener {
     
     ListView lv = null;
     
+    
+    
+    
+    /**
+     * Verweis zur Hauptaktivität setzen
+     * @param baseActivity
+     */
+    
     public void setBaseActivity(Activity baseActivity) {
 		this.baseActivity = baseActivity;
 	}
 
+    
+	
+	   /**
+  * Methode wird aufgerufen sobald die Ansicht erzeugt werden soll, die dann hier auch zurückgegeben wird
+  * Hier wird die Ansicht aufgebaut
+  * @param inflater
+  * @param container
+  * @param savedInstanceState
+  * @return
+  */
+    
+    
+    
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     	
+    	//View der das Layout ladet
     	 View view = inflater.inflate(R.layout.fragment_store_menu, container, false);
+    	 
+    	 
     	 lv = (ListView)view.findViewById(R.id.storemenulist);
     	 doSomething();
 
         return view;
     }
 
+    
+    
+    
+    
+    /**
+     * Methode wird aufgerufen am ende der onCreateView Methode hier wird das Menü aufgebaut 
+     * auf das man dann kilcken kann und dem eine int Wert zugewiesen.
+     * 
+     */
+    
+    
     public void doSomething() {
 
 
@@ -71,12 +110,26 @@ public class StoreFragment extends Fragment implements OnItemClickListener {
         lv.setOnItemClickListener(this);
 
     }
+    
+    
+    
+    
+    
+    /**
+	 * ClickListener Event Handler
+	 * Wird ausgeführt sobald kurz auf ein Listenelement geklickt wird 
+	 * @param parent
+	 * @param view
+	 * @param position
+	 * @param id
+	 */
+    
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position,
             long id) {
 
-    	//getListView().setClickable(false);
+    	
         Toast.makeText(getActivity(), menutitles[position], Toast.LENGTH_SHORT)
                 .show();
         
@@ -86,21 +139,36 @@ public class StoreFragment extends Fragment implements OnItemClickListener {
         llof.setBaseActivity(baseActivity);
      	
         switch(position) {
+        
+        
+        /**
+    	 * Fall 1 nach klick auf Download wird die Download Liste ausgegeben
+    	 * 
+    	 */
+        
+        
 	        case 0: 
 	        	llof.setDownload();
 	        	fragmentTransaction.replace(R.id.fragmentcontainer, llof);
 	        	fragmentTransaction.addToBackStack(null);
 	         	fragmentTransaction.commit();
-	            	
-	    	
 	         	break;
+	         	
+	         	/**
+	        	 * Fall 2 nach klick auf Upload wird die Upload Liste ausgegeben
+	        	 * 
+	        	 */
+	         	
+	         	
 	        case 1:
 	        	llof.setUpload();
 	        	fragmentTransaction.replace(R.id.fragmentcontainer, llof);
 	        	fragmentTransaction.addToBackStack(null);
 	         	fragmentTransaction.commit();
-	         	
 	         	break;
+	         	
+	         	
+	         	
 	       default: Toast.makeText(getActivity(),"???",Toast.LENGTH_SHORT).show();
 	       			break;
         }

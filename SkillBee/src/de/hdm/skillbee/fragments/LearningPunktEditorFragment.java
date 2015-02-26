@@ -25,6 +25,7 @@ import de.hdm.skillbee.controller.ControllerDBLokal;
 
 /**
  * 
+ * Fragmentklasse, die zum Anzeigen des Editor-Übersicht der Learning-Knoten zuständig ist.
  * @author Moser, Roth, Sonntag, Zanella, Zimmermann
  *
  */
@@ -46,37 +47,57 @@ public class LearningPunktEditorFragment extends ListFragment implements OnItemC
     Adapterwithouticons adapter;
     private List<RowItemLLOverview> rowItemslloverview;
     
+    
+	 /**
+* Verweis zur Hauptaktivität setzen
+* @param baseActivity
+*/
+    
     public void setBaseActivity(Activity baseActivity) {
 		this.baseActivity = baseActivity;
 	}
 	
     
+    /**
+  	  * Methode wird aufgerufen sobald die Ansicht erzeugt werden soll, die dann hier auch zurückgegeben wird
+  	  * Hier wird die Ansicht aufgebaut
+  	  * @param inflater
+  	  * @param container
+  	  * @param savedInstanceState
+  	  * @return 
+  	  */
+  	
+    
+    
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
+    	
+    	
+    	//View der das Layout ladet 
     	View v = inflater.inflate(R.layout.fragment_learningpunkt_editor, null, false);
     	cdbl = ControllerDBLokal.get();
-    	
-//         llid = getArguments().getInt("llid");   
-//    	 llkategorie = getArguments().getInt("llkategorie");
-//		 llbezeichnung =getArguments().getString("llbezeichnung");
-    	
+    
+		//Button zum erstellen neuer Learning-Knoten.
     	nodecreatebutton = (Button)v.findViewById(R.id.btnnodeerstellen);
     	setOnClickListener();
         return v;
         
     }
     
+    
+    /**
+ 	  * Methode die alle Knoten der ausgewählten Learningline Anzeigt und beschriftet.
+ 	  * @param savedInstanceState
+ 	  */
+    
+    
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
 
         super.onActivityCreated(savedInstanceState);
 
-     //   menutitles = getResources().getStringArray(R.array.titles);
-        
-        
-       // Learningline ll = new Learningline();
-        
+     
         
         allnodes = cdbl.getKnotenMapper().findByLL(ll);
         
@@ -118,10 +139,30 @@ public class LearningPunktEditorFragment extends ListFragment implements OnItemC
 
     }
     
+    
+    
+    
+    
+    /**
+     * Learninglineindex setzen von vorhergelagertem Fragment
+     * @param ll
+     */
+    
+    
     public void setLL(Learningline ll) {
 		this.ll = ll;
 	}
 	
+    
+    
+    
+    
+    
+    /**
+ 	  * Methode die das Fragment wechselte wenn man auf einen Learning-Knoten klickt.
+ 	  */
+    
+    
 	public void setOnClickListener() {
 		nodecreatebutton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -143,7 +184,14 @@ public class LearningPunktEditorFragment extends ListFragment implements OnItemC
     
 	 
 
-
+    /**
+	 * ClickListener Event Handler
+	 * Wird ausgeführt sobald kurz auf ein Listenelement geklickt wird 
+	 * @param parent
+	 * @param view
+	 * @param position
+	 * @param id
+	 */
 	
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position,

@@ -27,6 +27,7 @@ import android.widget.Toast;
 
 /**
  * 
+ * Fragmentklasse, die zur grafischen Ansicht der ausgewählten Learningline zuständig ist und die Learning-Knoten anzeigt.
  * @author Moser, Roth, Sonntag, Zanella, Zimmermann
  *
  */
@@ -45,16 +46,37 @@ public class LearningLineFragment extends Fragment {
 	View v = null;
 	
 	
+	
+	 /**
+	  * Verweis zur Hauptaktivität setzen
+	  * @param baseActivity
+	  */
+	
+	
 	public void setBaseActivity(Activity baseActivity) {
 		this.baseActivity = baseActivity;
 	}
 
+	
+	
+
+	  /**
+	  * Methode wird aufgerufen sobald die Ansicht erzeugt werden soll, die dann hier auch zurückgegeben wird
+	  * Hier wird die Ansicht aufgebaut
+	  * @param inflater
+	  * @param container
+	  * @param savedInstanceState
+	  * @return 
+	  */
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 	    		
+		
+		//View der das Layout ladet
 		v = inflater.inflate(R.layout.learningline_fragment, container, false);
 				
+		
 		cdbl = ControllerDBLokal.get();
 		rl = (RelativeLayout)v.findViewById(R.id.buttonpanel);
 		pointer=0;
@@ -63,9 +85,26 @@ public class LearningLineFragment extends Fragment {
 		return v;
 	}
 	
+	
+	
+	/**
+     * Learninglineindex setzen von vorhergelagertem Fragment
+     * @param ll
+     */
+	
 	public void setLL(Learningline ll) {
 		this.ll = ll;
 	}
+	
+	
+	
+
+	  /**
+	   * 
+	  * Methode die zuständig ist die Learningline grafisch anzuzeigen und die Knoten auszugeben.
+	  * 	 
+	  */
+	
 	
 	public void buildLL() {
 		
@@ -89,7 +128,7 @@ public class LearningLineFragment extends Fragment {
 				
 				button.setText(knotenVector.elementAt(i).getUeberschrift());
 				
-				
+				// hier wird die Knoten größe definiert
 				button.setHeight(154);
 				button.setWidth(154);
 				
@@ -100,10 +139,6 @@ public class LearningLineFragment extends Fragment {
 					public void onClick(View v) {
 				    	FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
 
-					//	String number = knotenVector.elementAt(j).getUeberschrift();
-//						Toast einToast = Toast.makeText(LearningLineFragment.this.getActivity(), number, Toast.LENGTH_SHORT);
-//						einToast.show();
-						
 						LearningPunktFragment lpf = new LearningPunktFragment();
 			        	fragmentTransaction.replace(R.id.fragmentcontainer, lpf);
 			        	fragmentTransaction.addToBackStack(null);
@@ -116,15 +151,12 @@ public class LearningLineFragment extends Fragment {
 				
 				pointer++;
 				
-				//LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-				//	params.weight = 1.0f;
-				//button.setLayoutParams(params);
+	
 				
-				
+				// Verbindungselement der Knoten als Bild mit einem Strich
 				ImageView img = new ImageView(this.getActivity());
 				img.setImageResource(R.drawable.verbindungmittel);
-				//img.setLayoutParams(params);
-				
+		
 				
 				button.setY(y);
 				img.setY(y-27);
@@ -141,7 +173,7 @@ public class LearningLineFragment extends Fragment {
 					rl.addView(img);
 				}
 				
-				//RelativeLayout je Knoten vergï¿½ï¿½ern
+				//RelativeLayout jeder Knoten verlängert die Ansicht
 				rl.getLayoutParams().height = rl.getLayoutParams().height + 154;
 				
 				button.bringToFront();
@@ -151,7 +183,7 @@ public class LearningLineFragment extends Fragment {
 		
 		else{
 			
-			
+			// Ausgabe einer Nachricht falls in der ausgewählten Learningline keine Knoten angelegt sind.
 			Toast keineKnoten = Toast.makeText(LearningLineFragment.this.getActivity(), "Keine Knoten gefunden in der ausgewÃ¤hlten Learningline", Toast.LENGTH_SHORT);
 			keineKnoten.show();
 			
